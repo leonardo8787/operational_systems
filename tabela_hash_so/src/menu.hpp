@@ -26,6 +26,9 @@ void menu(){
 		cout<<"6 - ler nomes associados a index(arquivo1)"<<endl;
 		cout<<"7 - token (testes)"<<endl;
 		cout<<"8 - sair"<<endl;
+		cout<<endl;
+		cout<<"esta opção está sendo testada!"<<endl;
+		cout<<"9 - nomes"<<endl;
 		cin>>op;
 		switch (op)
 		{
@@ -56,11 +59,14 @@ void menu(){
 		case 8:
 			cout<<"saindo..."<<endl;
 			break;
+		case 9:
+			//nomes();
+			break;
 		default:
 			cout<<"Escolha uma opção válida"<<endl;
 			break;
 		}
-	}while(op != 4);
+	}while(op != 8);
 }
 
 #endif 

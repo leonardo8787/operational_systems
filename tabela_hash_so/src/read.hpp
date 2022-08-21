@@ -9,6 +9,8 @@ unordered_map<string, vector<int>> texto;
 vector<int> v2;
 unordered_map<string, vector<int>> texto2;
 
+set<string, string> nomes;
+
 class Ler{
     public:
         void ler();
@@ -118,7 +120,7 @@ void Hash(){
         cout<<"\n";
         cont++;
         cout<<cont<<"°"<<endl;
-        cout << "-> [" + mapIt->first + "]"
+        cout << "-> aparece [" + mapIt->first + "]"
              << " : ";
 
         for (auto c : mapIt->second)
@@ -134,7 +136,7 @@ void Hash2(){
         cout<<"\n";
         cont++;
         cout<<cont<<"°"<<endl;
-        cout << "-> [" + mapIt->first + "]"
+        cout << "-> aparece [" + mapIt->first + "]"
              << " : ";
 
         for (auto c : mapIt->second)
@@ -222,5 +224,36 @@ void Token(){
 
     file1.close();
 }
+/*
+void Nomes(){
+    ifstream file1;
+    file1.open("src/dataset/D.csv");
+    //int cont=0;
+    while(file1){ 
+        string palavra;
+        getline(file1, palavra);
+        //string line = "GeeksForGeeks is a must try";
+        vector <string> tokens;
+        stringstream check1(palavra);
+        string intermediate;
+        while(getline(check1, intermediate, ','))
+        {
+            tokens.push_back(intermediate);
+        }
+        //for(int i = 0; i < (int) tokens.size(); i++)
+        //    cout << tokens[i] << '\n';
+        nomes.insert(tokens[tokens.size()-1], tokens[tokens.size()]); 
+    }
+
+    for (itr = nomes.begin(); itr != nomes.end(); itr++) {
+        cout << *itr << " ";
+    }
+
+    getchar();
+    getchar();
+
+    file1.close();
+}
+*/
 
 #endif
