@@ -120,9 +120,10 @@ void Hash(){
         cout<<"\n";
         cont++;
         cout<<cont<<"°"<<endl;
-        cout << "-> aparece [" + mapIt->first + "]"
+        cout << "-> quantidade [" + mapIt->first + "]"
              << " : ";
 
+        cout<<"aparições-> ";
         for (auto c : mapIt->second)
             cout << c << " ";
 
@@ -136,9 +137,10 @@ void Hash2(){
         cout<<"\n";
         cont++;
         cout<<cont<<"°"<<endl;
-        cout << "-> aparece [" + mapIt->first + "]"
+        cout << "-> quantidade [" + mapIt->first + "]"
              << " : ";
 
+        cout<<"aparições-> ";
         for (auto c : mapIt->second)
             cout << c << " ";
 
