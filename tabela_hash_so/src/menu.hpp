@@ -21,14 +21,12 @@ void menu(){
 		cout<<"1 - ler (arquivo1)"<<endl;
 		cout<<"2 - ler arquivo tokenizado com index (arquivo1)"<<endl;
 		cout<<"3 - ler nomes associados a index(arquivo1)"<<endl;
-		cout<<"4 - ler (arquivo1)"<<endl;
-		cout<<"5 - ler arquivo tokenizado com index (arquivo1)"<<endl;
-		cout<<"6 - ler nomes associados a index(arquivo1)"<<endl;
+		cout<<"4 - ler (Task)"<<endl;
+		cout<<"5 - ler arquivo tokenizado com index (Task)"<<endl;
+		cout<<"6 - ler nomes associados a index(Task)"<<endl;
 		cout<<"7 - token (testes)"<<endl;
-		cout<<"8 - sair"<<endl;
-		cout<<endl;
-		cout<<"esta opção está sendo testada!"<<endl;
-		cout<<"9 - nomes"<<endl;
+		cout<<"8 - Intersecção"<<endl;
+		cout<<"9 - sair"<<endl;
 		cin>>op;
 		switch (op)
 		{
@@ -57,10 +55,10 @@ void menu(){
 			Token();
 			break;
 		case 8:
-			cout<<"saindo..."<<endl;
+			ComparaUnoderMap();
 			break;
 		case 9:
-			//nomes();
+			cout<<"saindo..."<<endl;
 			break;
 		default:
 			cout<<"Escolha uma opção válida"<<endl;

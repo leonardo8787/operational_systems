@@ -2,6 +2,7 @@
 #define READ_H_
 
 #include "includes.hpp"
+#define TAM 100
 
 vector<int> v;
 unordered_map<string, vector<int>> texto;
@@ -20,6 +21,7 @@ class Ler{
         void HashNomes1();
         void HashNomes2();
         void Token();
+        void Task();
 };
 
 void ler(){
@@ -181,7 +183,6 @@ void HashNomes2(){
     while(file2){ 
         string palavra;
         getline(file2, palavra);
-        //string line = "GeeksForGeeks is a must try";
         vector <string> tokens;
         stringstream check1(palavra);
         string intermediate;
@@ -189,8 +190,6 @@ void HashNomes2(){
         {
             tokens.push_back(intermediate);
         }
-        //for(int i = 0; i < (int) tokens.size(); i++)
-        //    cout << tokens[i] << '\n';
         cout << cont++ << "° : " << tokens[tokens.size()-1] << " " << tokens[tokens.size()] << '\n';
     }
 
@@ -226,36 +225,53 @@ void Token(){
 
     file1.close();
 }
-/*
-void Nomes(){
+
+void ComparaUnoderMap(){
+    cout<<"====Intersecções===="<<endl;
+    int cont=0;
+    for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt){
+        cont++;
+        for (auto mapIt2 = begin(texto2); mapIt2 != end(texto2); ++mapIt2){
+            if(mapIt->second == mapIt2->second){
+                cout<<"linha: "<<cont<<endl;
+                cout << "[" + mapIt->first + "]"
+                    << " : ";
+
+                for (auto c : mapIt->second)
+                    cout << c << " ";
+
+                cout<<endl;
+            }
+        }
+        cout<<endl;
+    }
     ifstream file1;
     file1.open("src/dataset/D.csv");
-    //int cont=0;
-    while(file1){ 
-        string palavra;
+
+    string palavra;
+    string key;
+    char *output;
+    char *token;
+    int coluna=1;
+    int linha=1;
+
+    if (!file1){
+        cout<<"o arquivo não pode ser aberto, o programa será fechado!"<<endl;
+        return;
+    }
+
+    int cont2=0;
+    while(file1){
+        if (coluna==4) coluna=1;
         getline(file1, palavra);
-        //string line = "GeeksForGeeks is a must try";
-        vector <string> tokens;
-        stringstream check1(palavra);
-        string intermediate;
-        while(getline(check1, intermediate, ','))
-        {
-            tokens.push_back(intermediate);
+        cout<<"\n";
+        cont2++;
+        if(cont2 == 11){
+            
+            cout<<cont<<"° - linha"<<endl;
+            cout<<"{"<<palavra<<"}"<<endl;
         }
-        //for(int i = 0; i < (int) tokens.size(); i++)
-        //    cout << tokens[i] << '\n';
-        nomes.insert(tokens[tokens.size()-1], tokens[tokens.size()]); 
     }
-
-    for (itr = nomes.begin(); itr != nomes.end(); itr++) {
-        cout << *itr << " ";
-    }
-
-    getchar();
-    getchar();
-
-    file1.close();
 }
-*/
 
 #endif
