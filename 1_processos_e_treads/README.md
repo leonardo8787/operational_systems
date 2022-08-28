@@ -40,3 +40,14 @@ Na imagem acima o primeiro colchete indica quantas vezes a flor aparece, sendo l
 
 <p align = "center">
     <img src="https://github.com/leonardo8787/operational_systems/blob/main/imagens/leituraFlor.png" width="350"></img>
+
+
+<h2>Resoluções Etapa 2</h2>
+
+O menu da etapa 2 será o mesmo da etapa 1; Sendo assim a primeira opção escolhida para resolução será a opção 7, para tokenizar a linha e guardala por completo, para que seja feita a busca.
+
+// em andamento ...
+
+<h1>Referências</h1>
+
+ *  SistemasOperacionaisModernosTanenbaum4Edio [1]
