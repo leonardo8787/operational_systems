@@ -10,6 +10,9 @@ unordered_map<string, vector<int>> texto;
 vector<int> v2;
 unordered_map<string, vector<int>> texto2;
 
+vector<int> v3;
+unordered_map<string, vector<int>> texto3;
+
 set<string, string> nomes;
 
 class Ler{
@@ -213,9 +216,10 @@ void Token(){
         {
             tokens.push_back(intermediate);
         }
-        cout<<"{"<<endl;
-        for(int i = 0; i < (int) tokens.size(); i++)
-            cout << tokens[i] << '\n';
+        cout<<"{ ";
+        for(int i = 0; i < (int) tokens.size(); i++){ 
+            cout << tokens[i] << ' ';
+        }
         cout<<"}"<<endl;
     }
     
@@ -227,6 +231,16 @@ void Token(){
 }
 
 void ComparaUnoderMap(){
+    ifstream file1;
+    file1.open("src/dataset/D.csv");
+
+    string palavra;
+    string key;
+    //char *output;
+    //char *token;
+    int coluna=1;
+    //int linha=1;
+
     cout<<"====Intersecções===="<<endl;
     int cont=0;
     for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt){
@@ -245,15 +259,6 @@ void ComparaUnoderMap(){
         }
         cout<<endl;
     }
-    ifstream file1;
-    file1.open("src/dataset/D.csv");
-
-    string palavra;
-    string key;
-    char *output;
-    char *token;
-    int coluna=1;
-    int linha=1;
 
     if (!file1){
         cout<<"o arquivo não pode ser aberto, o programa será fechado!"<<endl;
