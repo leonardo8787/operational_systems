@@ -15,3 +15,28 @@ Já a base T representará os processos a serem executados, cada um produzindo u
 <strong>Etapa V:</strong> Como as tarefas em T estão espalhadas não tem como sabermos o quão importante é a cache, uma vez que estamos utilizando apenas uma política do tipo Round Robin para escalonar. Então, sua função é criar uma política que organize melhor as tarefas para a sequência de execução aproveite melhor as computações já realizadas. Para isso, pense em organizar melhor os parâmetros de entrada de forma a encontrar grandes sobreposições de itens similares.
 
 <strong>Etapa VI:</strong> Vamos implementar uma memória primária para chavear processos. Nesse modelo, uma tarefa não será concluída por completo porque se seu tempo de CPU acabar você a colocará em um espaço de memória para aguardar nova submissão. Vamos analisar nessa etapa os impactos do chaveamento, da organização de memória e suas diferentes hierarquias.
+
+
+<h2>Resuloções Etapa 1</h2>
+
+<p align = "center">
+    <strong>Menu</strong>
+
+<p align = "center">
+    <img src="https://github.com/leonardo8787/operational_systems/blob/main/imagens/menu%20.png" width="350"></img>
+    
+No Menu é possível ver todas as opções do software, até o presente momento. Para a primeira atividade foi proposto a procura de numerais dentro de uma pequena base de dados, informando a quantidade de aparições e suas respectivas posições. Para uma melhor compreensão segue as imagens dos resultados:
+
+
+<p align = "center">
+    <img src="https://github.com/leonardo8787/operational_systems/blob/main/imagens/leituraD.png" width="350"></img>
+
+Esta primeira leitura dos dados é essencial para que as informações sejam inseridas na Tabela Hash. A tabela Hash foi usada para manutenção dos dados visto que a sua procura tem custo associado a O(1). Em seguida é mostrado a busca pelos números das flores e suas posições.
+
+<p align = "center">
+    <img src="https://github.com/leonardo8787/operational_systems/blob/main/imagens/procuraD.png" width="350"></img>
+    
+Na imagem acima o primeiro colchete indica quantas vezes a flor aparece, sendo ligada a seguinte equação matemática: n-1; na frente dos dois pontos é possível ver a incidência de cada numeral. A próxima imagem mostra os nomes das flores por index:
+
+<p align = "center">
+    <img src="https://github.com/leonardo8787/operational_systems/blob/main/imagens/leituraFlor.png" width="350"></img>
