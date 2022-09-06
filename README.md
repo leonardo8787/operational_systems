@@ -40,6 +40,12 @@ Todo sistema é constituído de dois conjuntos básicos: processos e arquivos.
 * Processos são compostos de, código executável, dados, atribuídos do código, pilha de execução, registradores de hardware e conjunto de instruções.
 * Para que dois ou mais processos troquem informação o Sistema Operacional faz uso dos chamados pipes.
 
+Todos os computadores modernos frequentemente realizam várias tarefas ao mesmo tempo. As pessoas acostumadas a trabalhar com computadores talvez não estejam totalmente cientes desse fato, então alguns exemplos podem esclarecer este ponto. Neste repositório há uma aplicação a qual busca emergir a ideia de um processo <strong>Programa1</strong>. Um processo é apenas uma instância de um programa em execução, incluindo os valores atuais do contador do programa, registradores e variáveis. Conceitualmente, cada processo tem sua própria CPU virtual. Na verdade, a CPU real troca a todo momento o sistema, é muito mais fácil pensar a respeito de uma coleção de processos sendo executados em (pseudo) paralelo do que tentar acompanhar como a CPU troca de um programa para o outro. Este mecanismo de trocas rápidas é chamado de multiprogramação.
 
+<h2>Threads</h2>
+
+Em sistemas operacionais trdicionais, cada processo tem um espaço de endereçamento e um único thread de controle. Na realidade, essa é quase a definição de um processo. Não obstante isso, em muitas situações, é desejável exemplo, considere um processador de texto. Processadores de texto em geral exibem o documento que está sendo criado em uma tela formatada exatamente como aparecerá na página impressa. Em particular, todas as quebras de linha e quebras de página estão em suas posições finais e corretas, de maneira que o usuário pode inspecioná-las e mudar o documento se necessário (por exemplo, eliminar viúvas e órfãos )
+
+Thread é uma forma como um processo/tarefa de um programa de computador 
 
 
