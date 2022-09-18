@@ -1,6 +1,6 @@
 CXX      := -g++
-CXXFLAGS := -Wall -Wextra -Werror
-LDFLAGS  := -lstdc++ -lm
+CXXFLAGS := -Wall -Wextra -Werror -pthread
+LDFLAGS  := -lstdc++ -lm -pthread
 BUILD    := ./build
 OBJ_DIR  := $(BUILD)/objects
 APP_DIR  := $(BUILD)/

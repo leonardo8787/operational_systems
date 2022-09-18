@@ -4,6 +4,10 @@
 #include "includes.hpp"
 #define TAM 100
 
+vector<string> tokens;
+queue<string> fila;
+vector<string> v0;
+
 vector<int> v;
 unordered_map<string, vector<int>> texto;
 
@@ -19,6 +23,8 @@ class Ler{
     public:
         void ler();
         void ler2();
+        void poeNaFilaALinha();
+        void mostraFila();
         void Hash();
         void Hash2();
         void HashNomes1();
@@ -117,6 +123,43 @@ void ler2(){
     getchar();
 
     file2.close();
+}
+
+void poeNaFilaALinha(){
+
+    ifstream file;
+    file.open("src/dataset/T.csv");
+
+    if (!file){
+        cout<<"o arquivo 2 não pode ser aberto, o programa será fechado!"<<endl;
+        return;
+    }
+    
+    while(file){ 
+        string palavra;
+        getline(file, palavra);
+        stringstream check1(palavra);
+        string intermediate;
+        while(getline(check1, intermediate, ','))
+        {
+            tokens.push_back(intermediate);
+            fila.push(intermediate);
+        }
+        for(int i = 0; i < (int) tokens.size(); i++){ 
+            cout << tokens[i] << ' ';
+        }
+        cout<<endl;
+    }
+
+
+    getchar();
+    getchar();
+
+    file.close();
+}
+
+void mostraFila(){
+    //cout<<fila.top()<<endl;
 }
 
 void Hash(){
