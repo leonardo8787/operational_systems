@@ -4,6 +4,7 @@
 #include "includes.hpp"
 #define TAM 100
 
+vector<string> a;
 vector<vector<string>> combinacoes;
 vector<string> recebe;
 vector<string> tokens;
@@ -23,7 +24,9 @@ class Ler{
         void ler();
         void ler2();
         void poeNaFilaALinha();
+        void combinacao();
         void processaFila();
+        void escreveCombinacao();
         void Hash();
         void Hash2();
         void HashNomes1();
@@ -187,6 +190,23 @@ void combinacao(){
     }
 }
 
+void escreveCombinacao(){
+    string linha;
+    ofstream outFile;
+    outFile.open("src/dataset/combinacao.txt");
+    if(!outFile){
+        cout<<"Erro ao gerar o arquivo combinação.txt"<<endl;
+        abort();
+    }else{
+        for(auto i:combinacoes){
+            for(auto j:i){
+                outFile<<j<<" ";
+            }
+            cout<<endl;
+        }
+    }
+}
+
 void Hash(){
     int cont=0;
     for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt){
@@ -296,55 +316,6 @@ void Token(){
     getchar();
 
     file1.close();
-}
-
-void ComparaUnoderMap(){
-    ifstream file1;
-    file1.open("src/dataset/D.csv");
-
-    string palavra;
-    string key;
-    //char *output;
-    //char *token;
-    int coluna=1;
-    //int linha=1;
-
-    cout<<"====Intersecções===="<<endl;
-    int cont=0;
-    for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt){
-        cont++;
-        for (auto mapIt2 = begin(texto2); mapIt2 != end(texto2); ++mapIt2){
-            if(mapIt->second == mapIt2->second){
-                cout<<"linha: "<<cont<<endl;
-                cout << "[" + mapIt->first + "]"
-                    << " : ";
-
-                for (auto c : mapIt->second)
-                    cout << c << " ";
-
-                cout<<endl;
-            }
-        }
-        cout<<endl;
-    }
-
-    if (!file1){
-        cout<<"o arquivo não pode ser aberto, o programa será fechado!"<<endl;
-        return;
-    }
-
-    int cont2=0;
-    while(file1){
-        if (coluna==4) coluna=1;
-        getline(file1, palavra);
-        cout<<"\n";
-        cont2++;
-        if(cont2 == 11){
-            
-            cout<<cont<<"° - linha"<<endl;
-            cout<<"{"<<palavra<<"}"<<endl;
-        }
-    }
 }
 
 #endif

@@ -68,8 +68,7 @@ void etapa2(){
 		cout<<"1 - ler (T) coloca em Fila e tokeniza"<<endl;
 		cout<<"2 - processaFila"<<endl;
 		cout<<"3 - Combinações"<<endl;
-		cout<<"4 - token (testes)"<<endl;
-		cout<<"5 - Intersecção"<<endl;
+		cout<<"4 - escreve combinações no arquivo .txt"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
@@ -87,10 +86,7 @@ void etapa2(){
 				combinacao();
 				break;
 			case 4:
-				Token();
-				break;
-			case 5:
-				ComparaUnoderMap();
+				escreveCombinacao();
 				break;
 			case 111:
 				cout<<"saindo..."<<endl;
