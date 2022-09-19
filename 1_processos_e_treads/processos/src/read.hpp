@@ -213,7 +213,7 @@ void Hash(){
         cout<<"\n";
         cont++;
         cout<<cont<<"°"<<endl;
-        cout << "-> quantidade [" + mapIt->first + "]"
+        cout << "[" + mapIt->first + "]"
              << " : ";
 
         cout<<"aparições-> ";
@@ -230,7 +230,7 @@ void Hash2(){
         cout<<"\n";
         cont++;
         cout<<cont<<"°"<<endl;
-        cout << "-> quantidade [" + mapIt->first + "]"
+        cout << "[" + mapIt->first + "]"
              << " : ";
 
         cout<<"aparições-> ";
