@@ -4,20 +4,18 @@
 #include "includes.hpp"
 #define TAM 100
 
+vector<vector<string>> combinacoes;
+vector<string> recebe;
 vector<string> tokens;
 queue<string> fila;
 vector<string> v0;
 vector<string> permutacoes;
-
 vector<string> v;
 unordered_map<string, vector<string>> texto;
-
 vector<string> v2;
 unordered_map<string, vector<string>> texto2;
-
 vector<string> v3;
 unordered_map<string, vector<string>> texto3;
-
 set<string, string> nomes;
 
 class Ler{
@@ -162,7 +160,6 @@ void poeNaFilaALinha(){
 }
 
 void processaFila(){
-    vector<string> recebe;
     for(auto i:tokens){
         for(auto j:texto){
             if(j.f==i){
@@ -173,6 +170,20 @@ void processaFila(){
     cout<<"Resultados:"<<endl;
     for(auto k:recebe){
         cout<<k<<endl;
+    }
+}
+
+void combinacao(){
+    vector<string> x;
+    for(auto &i:recebe){
+        x.push_back(i);
+        combinacoes.push_back(x);
+    }
+    for(auto i:combinacoes){
+        for(auto j:i){
+            cout<<j<<" ";
+        }
+        cout<<endl;
     }
 }
 

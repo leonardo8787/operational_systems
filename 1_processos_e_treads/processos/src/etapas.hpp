@@ -67,7 +67,7 @@ void etapa2(){
 		cout<<"===MENU==="<<endl;
 		cout<<"1 - ler (T) coloca em Fila e tokeniza"<<endl;
 		cout<<"2 - processaFila"<<endl;
-		cout<<"3 - "<<endl;
+		cout<<"3 - Combinações"<<endl;
 		cout<<"4 - token (testes)"<<endl;
 		cout<<"5 - Intersecção"<<endl;
 		cout<<"111 - voltar"<<endl;
@@ -84,7 +84,7 @@ void etapa2(){
                 processaFila();
 				break;
 			case 3:
-				Token();
+				combinacao();
 				break;
 			case 4:
 				Token();
