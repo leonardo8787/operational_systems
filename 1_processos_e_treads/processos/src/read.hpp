@@ -7,15 +7,16 @@
 vector<string> tokens;
 queue<string> fila;
 vector<string> v0;
+vector<string> permutacoes;
 
-vector<int> v;
-unordered_map<string, vector<int>> texto;
+vector<string> v;
+unordered_map<string, vector<string>> texto;
 
-vector<int> v2;
-unordered_map<string, vector<int>> texto2;
+vector<string> v2;
+unordered_map<string, vector<string>> texto2;
 
-vector<int> v3;
-unordered_map<string, vector<int>> texto3;
+vector<string> v3;
+unordered_map<string, vector<string>> texto3;
 
 set<string, string> nomes;
 
@@ -24,7 +25,7 @@ class Ler{
         void ler();
         void ler2();
         void poeNaFilaALinha();
-        void mostraFila();
+        void processaFila();
         void Hash();
         void Hash2();
         void HashNomes1();
@@ -47,12 +48,13 @@ void ler(){
     char *token;
     int coluna=1;
     int linha=1;
+    string linhaStr;
 
     if (!file1){
         cout<<"o arquivo 1 não pode ser aberto, o programa será fechado!"<<endl;
         return;
     }
-
+ 
     int cont=0;
     while(file1){
         if (coluna==4) coluna=1;
@@ -65,8 +67,9 @@ void ler(){
         token = strtok(output, ",");
         while (token != NULL){
             if (coluna==4) break;
-            key = to_string(coluna) + ", " + string(token);
-            texto[key].push_back(linha);
+            key = string(token);
+            linhaStr=to_string(linha);
+            texto[key].push_back(linhaStr);
             token = strtok(NULL, ",");
             coluna++;
         }
@@ -78,7 +81,7 @@ void ler(){
 
     file1.close();
 }
-
+/*
 void ler2(){
 
     ifstream file2;
@@ -124,7 +127,7 @@ void ler2(){
 
     file2.close();
 }
-
+*/
 void poeNaFilaALinha(){
 
     ifstream file;
@@ -143,13 +146,13 @@ void poeNaFilaALinha(){
         while(getline(check1, intermediate, ','))
         {
             tokens.push_back(intermediate);
-            fila.push(intermediate);
         }
-        for(int i = 0; i < (int) tokens.size(); i++){ 
-            cout << tokens[i] << ' ';
-        }
-        cout<<endl;
+        tokens.erase(tokens.end());
     }
+    for(int i = 0; i < (int) tokens.size(); i++){ 
+        cout << tokens[i] << ' ';
+    }
+    cout<<endl;
 
 
     getchar();
@@ -158,8 +161,19 @@ void poeNaFilaALinha(){
     file.close();
 }
 
-void mostraFila(){
-    //cout<<fila.top()<<endl;
+void processaFila(){
+    vector<string> recebe;
+    for(auto i:tokens){
+        for(auto j:texto){
+            if(j.f==i){
+                recebe.push_back(j.f);
+            }
+        }
+    }
+    cout<<"Resultados:"<<endl;
+    for(auto k:recebe){
+        cout<<k<<endl;
+    }
 }
 
 void Hash(){

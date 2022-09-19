@@ -66,11 +66,10 @@ void etapa2(){
 		cout<<"========================================================"<<endl;
 		cout<<"===MENU==="<<endl;
 		cout<<"1 - ler (T) coloca em Fila e tokeniza"<<endl;
-		cout<<"2 - mostra vector tratado"<<endl;
+		cout<<"2 - processaFila"<<endl;
 		cout<<"3 - "<<endl;
 		cout<<"4 - token (testes)"<<endl;
 		cout<<"5 - Intersecção"<<endl;
-		cout<<"6 - voltar para o menu principal"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
@@ -82,7 +81,7 @@ void etapa2(){
 				poeNaFilaALinha();
 				break;
 			case 2:
-                Hash2();
+                processaFila();
 				break;
 			case 3:
 				Token();
@@ -92,9 +91,6 @@ void etapa2(){
 				break;
 			case 5:
 				ComparaUnoderMap();
-				break;
-			case 6:
-				//menu();
 				break;
 			case 111:
 				cout<<"saindo..."<<endl;
