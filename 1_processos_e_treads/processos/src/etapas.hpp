@@ -27,7 +27,7 @@ void etapa1(){
 		cout<<"1 - ler (D)"<<endl;
 		cout<<"2 - ler arquivo tokenizado com index (D)"<<endl;
 		cout<<"3 - ler nomes associados a index (D)"<<endl;
-		cout<<"4 - voltar para o menu principal"<<endl;
+		cout<<"4 - mostra classes de flores"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
@@ -45,7 +45,7 @@ void etapa1(){
 				HashNomes1();
 				break;
 			case 4:
-				//menu();
+				mostraClasseDeFlores();
 				break;
 			case 111:
 				cout<<"saindo..."<<endl;
@@ -68,7 +68,6 @@ void etapa2(){
 		cout<<"1 - ler (T) coloca em Fila e tokeniza"<<endl;
 		cout<<"2 - processaFila"<<endl;
 		cout<<"3 - Combinações"<<endl;
-		cout<<"4 - escreve combinações no arquivo .txt"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
@@ -83,10 +82,8 @@ void etapa2(){
                 processaFila();
 				break;
 			case 3:
-				combinacao();
-				break;
-			case 4:
-				escreveCombinacao();
+				//combinacao1();
+				//combinacao2();
 				break;
 			case 111:
 				cout<<"saindo..."<<endl;

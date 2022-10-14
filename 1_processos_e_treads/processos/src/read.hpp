@@ -18,11 +18,14 @@ unordered_map<string, vector<string>> texto2;
 vector<string> v3;
 unordered_map<string, vector<string>> texto3;
 set<string, string> nomes;
+//classe de flores
+set<string> classes;
+//classe com valores associados
+vector<set<string>, string> classes2;
 
 class Ler{
     public:
         void ler();
-        void ler2();
         void poeNaFilaALinha();
         void combinacao();
         void processaFila();
@@ -30,6 +33,7 @@ class Ler{
         void Hash();
         void Hash2();
         void HashNomes1();
+        void mostraClasseDeFlores();
         void HashNomes2();
         void Token();
         void Task();
@@ -82,53 +86,7 @@ void ler(){
 
     file1.close();
 }
-/*
-void ler2(){
 
-    ifstream file2;
-    file2.open("src/dataset/T.csv");
-
-	//vector<string> token;
-	//unordered_map<string, int> umap;
-
-    string palavra;
-    string key;
-    char *output;
-    char *token;
-    int coluna=1;
-    int linha=1;
-
-    if (!file2){
-        cout<<"o arquivo 2 não pode ser aberto, o programa será fechado!"<<endl;
-        return;
-    }
-
-    int cont=0;
-    while(file2){
-        if (coluna==4) coluna=1;
-        getline(file2, palavra);
-        cout<<"\n";
-        cont++;
-        cout<<cont<<"° - linha"<<endl;
-        cout<<"{"<<palavra<<"}"<<endl;
-        output = const_cast<char *>(palavra.c_str());
-        token = strtok(output, ",");
-        while (token != NULL){
-            if (coluna==4) break;
-            key = to_string(coluna) + ", " + string(token);
-            texto2[key].push_back(linha);
-            token = strtok(NULL, ",");
-            coluna++;
-        }
-        linha++;
-    }
-
-    getchar();
-    getchar();
-
-    file2.close();
-}
-*/
 void poeNaFilaALinha(){
 
     ifstream file;
@@ -165,7 +123,7 @@ void poeNaFilaALinha(){
 void processaFila(){
     for(auto i:tokens){
         for(auto j:texto){
-            if(j.f==i){
+            if(j.f==i){ 
                 recebe.push_back(j.f);
             }
         }
@@ -176,20 +134,44 @@ void processaFila(){
     }
 }
 
-void combinacao(){
+void combinacao1(){
     vector<string> x;
     for(auto &i:recebe){
         x.push_back(i);
         combinacoes.push_back(x);
     }
-    for(auto i:combinacoes){
-        for(auto j:i){
-            cout<<j<<" ";
-        }
-        cout<<endl;
-    }
+    // for(auto i:combinacoes){
+    //     for(auto j:i){
+    //         cout<<j<<" ";
+    //     } 
+    //     cout<<endl;
+    // }
 }
 
+//vector<vector<string>> combinacoes, int perm[],int index, int n, int k
+/*void combinacao2(){
+
+    int i=0;
+    bool vetor_bool[168];
+    for(int i=0; i<168; i++) 
+        vetor_bool[i] = false;
+
+    if(i == 168){
+        for(auto &i:recebe){
+            if(i == "1"){
+                cout<<i<<" ";
+            }
+            cout<<endl;
+        }
+    }
+    else{
+        vetor_bool[i]=true;
+        combinacao2();
+        vetor_bool[i]=false;
+        combinacao2();
+    }
+}*/
+/* 
 void escreveCombinacao(){
     string linha;
     ofstream outFile;
@@ -206,6 +188,7 @@ void escreveCombinacao(){
         }
     }
 }
+*/
 
 void Hash(){
     int cont=0;
@@ -244,11 +227,10 @@ void Hash2(){
 void HashNomes1(){
     ifstream file1;
     file1.open("src/dataset/D.csv");
-    int cont=0;
+
     while(file1){ 
         string palavra;
         getline(file1, palavra);
-        //string line = "GeeksForGeeks is a must try";
         vector <string> tokens;
         stringstream check1(palavra);
         string intermediate;
@@ -256,15 +238,37 @@ void HashNomes1(){
         {
             tokens.push_back(intermediate);
         }
-        //for(int i = 0; i < (int) tokens.size(); i++)
-        //    cout << tokens[i] << '\n';
-        cout << cont++ << "° : " << tokens[tokens.size()-1] << " " << tokens[tokens.size()] << '\n';
+        if(tokens.size()){ 
+            cout <<tokens[tokens.size()] << " " << tokens[tokens.size()-1] << '\n';
+            string palavra=tokens[tokens.size()]+" "+tokens[tokens.size()-1];
+            classes.insert(palavra);
+        }
     }
+
+  for(auto& str: classes)
+  {
+    cout << str <<endl;
+  }
 
     getchar();
     getchar();
 
     file1.close();
+}
+
+void mostraClasseDeFlores(){
+  for(auto& str: classes)
+  {
+    cout << str <<endl;
+  }
+}
+
+void Classe2(){
+
+}
+
+void comparaValores(){
+    
 }
 
 void HashNomes2(){
