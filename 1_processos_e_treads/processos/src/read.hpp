@@ -245,10 +245,10 @@ void HashNomes1(){
         }
     }
 
-  for(auto& str: classes)
-  {
-    cout << str <<endl;
-  }
+    for(auto& str: classes)
+    {
+        cout << str <<endl;
+    }
 
     getchar();
     getchar();
@@ -263,6 +263,7 @@ void mostraClasseDeFlores(){
   }
 }
 
+/*
 void Classe2(){
 
 }
@@ -270,6 +271,7 @@ void Classe2(){
 void comparaValores(){
     
 }
+*/
 
 void HashNomes2(){
     ifstream file2;
