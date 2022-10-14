@@ -44,9 +44,9 @@ Na imagem acima o primeiro colchete indica quantas vezes a flor aparece, sendo l
 
 <h2>Resoluções Etapa 2</h2>
 
-O menu da etapa 2 será o mesmo da etapa 1; Sendo assim a primeira opção escolhida para resolução será a opção 7, para tokenizar a linha e guardala por completo, para que seja feita a busca.
+Ao entrar no software haverá algumas mudanças no software em relação a versão anterior entregue ao professor. Vale ressaltar que alguns partes do desenvolvimento mudei alguns parâmetros da primeira etapa, sem alterar os resultados finais, mas para melhor desenvolvimento do código. Voltando a portabilidade do software, há um menu que leva o usuário direto as etapas a serem seguidas, na primeira etapa é necessário clicar na primeira e na segunda opção, para que a tabela HASH seja carregada. Seguindo o usuário terá que voltar digitando no terminal a opção 111, voltando ao menu principal, onde há as escolhas das etapas, agora será escolhida a segunda opção. Na segunda opção o usuário clicará na primeira opção, onde o arquivo T será carregado no vector, em seguida a opção 2, onde as informações serão processadas, por fim na opção três para que os dados sejam arquivados em um arquivo.txt. 
 
-// em andamento ...
+Em relação ao funcionamento do software, o núcleo central da aplicação é a leitura de arquivos inserindo-os em uma tabela hash e depois checando as suas aparições nos arquivos D e T. Para isso foi usado uma estrutura simples de leitura de arquivo que joga todas as informações tokenizadas para dentro da tabela hash, depois é chegada a hora de comparar os resultados da tabela T com os resultados da tabela D, utilizando um vetor para os dados tokenizados do arquivo T em comparação com os arquivos da tabela hash, que é dividida em chave e valores, sendo que as comparações são feitas utilizando a chave de cada hash. Assim sendo feitas tais comparações é hora de achar os dados que estão iguais no mesmo index de ambos arquivos. Depois desses passos o software faz uma combinação entre os valores escrevendoos em um arquivo txt. Assim foi elaborado o software até o presente momento. 
 
 <h1>Referências</h1>
 
