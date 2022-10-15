@@ -81,6 +81,12 @@ void interseccaoEntreLinhas(){
 
 Na segunda parte do trabalho foi pedido a intersecção dos valores da combinação com os valores de cada classe de flor para que pudessemos encontrar a classe que tivesse mais iterações, entretando como o tempo não jogou ao meu favor nessas últimas semanas não pude concluir esta etapa do processo, sendo preterida para a Etapa 4.
 
+<strong>Compilação</strong><p>
+    
+    Para utilizar o software e observar os passos é necessário seguir a ordem de etapas e dentro delas seguir a ordem crescente de opções, clicando em todas para que possa ser carregado os processos. Vale ressaltar que nessa etapa não teve apenas a implementação dos requesitos da terceira etapa mas sim a melhora da primeira etapa e melhora da combinação da segunda etapa, sendo um trabalho bem mais abrangente do que as etapas anteriores. O programa foi feito em ambiente Windows 11, sendo executado no WSL(virtualizador do Linux Ubuntu), utilizando makefile. 
+
+<h2>Etapa 4</h2>
+
 <h1>Referências</h1>
 
  *  SistemasOperacionaisModernosTanenbaum4Edio [1]
