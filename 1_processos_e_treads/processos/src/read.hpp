@@ -426,6 +426,7 @@ void printCombinacoes(){
         help.pop();
         for(auto &i:help2){
             cout<<"["<<i<<"]"<<" ";
+            //criar arquivo aqui
         }
         cout<<endl;
         help2.clear();
@@ -436,16 +437,25 @@ void printCombinacoes(){
 void interseccaoEntreLinhas(){
     queue<vector<string>> help = combinacoes;
     vector<string> help2;
+    char *output;
+    char *token;
+    string palavra;
     while(!help.empty()){
         help2=help.front();
         help.pop();
         for(auto &i:help2){
-            for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt){
-                if(mapIt->first == i){
-                    cout<<"T"<<endl;
+            palavra = i;
+            output = const_cast<char *>(palavra.c_str());
+            token = strtok(output, ",");
+            cout<<token<<endl;
+            /*for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt){
+                if(mapIt->first == token){ 
+                    cout<<token<<endl;
+                }else if(mapIt->first != token){
+                    cout<<"Não encontrada"<<endl;
                 }
                 cout << endl;
-            }
+            }*/
         }
         cout<<endl;
         help2.clear();
