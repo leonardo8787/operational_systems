@@ -419,6 +419,8 @@ void combinate(vector<string> vector, int perm[], int index, int n, int k)
 }
 
 void printCombinacoes(){
+    ofstream file;
+    file.open("src/texto.txt");
     queue<vector<string>> help = combinacoes;
     vector<string> help2;
     while(!help.empty()){
@@ -426,44 +428,41 @@ void printCombinacoes(){
         help.pop();
         for(auto &i:help2){
             cout<<"["<<i<<"]"<<" ";
-            //criar arquivo aqui
+            file << i;
         }
         cout<<endl;
         help2.clear();
     }
     cout<<endl;
+    file.close();
 }
 
 void interseccaoEntreLinhas(){
-    queue<vector<string>> help = combinacoes;
-    vector<string> help2;
+    cout<<"Intersecções entre as combinações e a Hash 1"<<endl;
+    string line;
     char *output;
     char *token;
-    string palavra;
-    while(!help.empty()){
-        help2=help.front();
-        help.pop();
-        for(auto &i:help2){
-            palavra = i;
-            output = const_cast<char *>(palavra.c_str());
-            token = strtok(output, ",");
-            cout<<token<<endl;
-            /*for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt){
-                if(mapIt->first == token){ 
+    ifstream myfile ("src/texto.txt"); 
+    if (myfile.is_open()){
+        while (! myfile.eof() ){
+            for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt){ 
+                getline (myfile,line);
+                output = const_cast<char *>(line.c_str());
+                token = strtok(output, ",");
+                if(mapIt->first == token){
                     cout<<token<<endl;
-                }else if(mapIt->first != token){
-                    cout<<"Não encontrada"<<endl;
+                    encontroCombinacoes.push_back(token);
                 }
-                cout << endl;
-            }*/
+            }
         }
-        cout<<endl;
-        help2.clear();
+        myfile.close();
     }
+    else cout << "Não abriu o arquivo!!"; 
+    myfile.close();
 }
 
 void interseccaoClasses(){
-
+    cout<<"Intersecção entre as Classes de Flores não concluída a tempo :/"<<endl;
 }
 
 #endif
