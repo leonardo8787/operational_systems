@@ -48,6 +48,39 @@ Ao entrar no software haverá algumas mudanças no software em relação a vers�
 
 Em relação ao funcionamento do software, o núcleo central da aplicação é a leitura de arquivos inserindo-os em uma tabela hash e depois checando as suas aparições nos arquivos D e T. Para isso foi usado uma estrutura simples de leitura de arquivo que joga todas as informações tokenizadas para dentro da tabela hash, depois é chegada a hora de comparar os resultados da tabela T com os resultados da tabela D, utilizando um vetor para os dados tokenizados do arquivo T em comparação com os arquivos da tabela hash, que é dividida em chave e valores, sendo que as comparações são feitas utilizando a chave de cada hash. Assim sendo feitas tais comparações é hora de achar os dados que estão iguais no mesmo index de ambos arquivos. Depois desses passos o software faz uma combinação entre os valores escrevendoos em um arquivo txt. Assim foi elaborado o software até o presente momento. 
 
+
+<h2>Etapa 3</h2>
+
+Para esta terceira etapa reorganizei a etapa 2 para que pudesse estar no padrão para as intersecções e combinações que a terceira iria exigir, assim foi melhorado a parte das combinações, utilizando um algoritmo pre moldado de combinações, além de separar em classes os itens pegos na primeira etapa, para que pudesse ser realizada a última demanda da Etapa 3. Assim para o cumprimento da atual etapa guardei as combinações num arquivo para que eu pudesse lê-lo e tokeniza-lo assim poderia comparar com a tabela hash do exercício 1 e tirar as intersecções. Segue abaixo o código usado para tal:
+
+~~~
+void interseccaoEntreLinhas(){
+    cout<<"Intersecções entre as combinações e a Hash 1"<<endl;
+    string line;
+    char *output;
+    char *token;
+    ifstream myfile ("src/texto.txt"); 
+    if (myfile.is_open()){
+        while (! myfile.eof() ){
+            for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt){ 
+                getline (myfile,line);
+                output = const_cast<char *>(line.c_str());
+                token = strtok(output, ",");
+                if(mapIt->first == token){
+                    cout<<token<<endl;
+                    encontroCombinacoes.push_back(token);
+                }
+            }
+        }
+        myfile.close();
+    }
+    else cout << "Não abriu o arquivo!!"; 
+    myfile.close();
+}
+~~~
+
+Na segunda parte do trabalho foi pedido a intersecção dos valores da combinação com os valores de cada classe de flor para que pudessemos encontrar a classe que tivesse mais iterações, entretando como o tempo não jogou ao meu favor nessas últimas semanas não pude concluir esta etapa do processo, sendo preterida para a Etapa 4.
+
 <h1>Referências</h1>
 
  *  SistemasOperacionaisModernosTanenbaum4Edio [1]
