@@ -4,6 +4,9 @@
 #include "includes.hpp"
 #define TAM 100
 
+int cont1=0; // flor -> versiculor
+int cont2=0; // flor -> virginica
+int cont3=0; // flor -> setosa
 vector<string> a;
 vector<string> recebe;
 vector<string> tokens;
@@ -24,7 +27,7 @@ set<string, string> nomes;
 set<string> classes;
 //classe com valores associados
 unordered_map<string, set<int>> classes2;
-unordered_map<string, set<int>> classes3;
+unordered_map<string, vector<int>> classes3;
 //sujeito a erros de compilação se escrito de forma errada !!!
 
 queue<vector<string>> combinacoes;
@@ -53,6 +56,10 @@ class Ler{
         void iniciaCombinacao();
         void combinate(vector<string> vector, int perm[], int index, int n, int k);
         void printCombinacoes();
+        void interseccoes1();
+        void interseccao2(string recebe);
+        void interseccao3(vector<int> v1, vector<int> v2);
+        void intersectionHash(vector<int> v);
         void interseccaoEntreLinhas();
         void interseccaoClasses();
 };
@@ -150,7 +157,7 @@ void lerT(){
             if (coluna==5){ // aqui deveria ser 4 e não 5 !!! 
                 key=string(token);
                 cout<<key<<endl;
-                classes3[key].insert(linha);
+                classes3[key].push_back(linha);
                 token = strtok(NULL, ",");
                 break;
             }else{
@@ -158,7 +165,7 @@ void lerT(){
                 linhaStr=to_string(linha);
                 texto2[key].push_back(linhaStr);
                 token = strtok(NULL, ",");
-                if(coluna<4){
+                if( coluna>=0 && coluna<4){
                     string teste;
                     teste=to_string(coluna)+", "+string(token);
                     aux.push_back(teste);
@@ -419,8 +426,6 @@ void combinate(vector<string> vector, int perm[], int index, int n, int k)
 }
 
 void printCombinacoes(){
-    ofstream file;
-    file.open("src/texto.txt");
     queue<vector<string>> help = combinacoes;
     vector<string> help2;
     while(!help.empty()){
@@ -428,37 +433,93 @@ void printCombinacoes(){
         help.pop();
         for(auto &i:help2){
             cout<<"["<<i<<"]"<<" ";
-            file << i;
         }
         cout<<endl;
         help2.clear();
     }
     cout<<endl;
-    file.close();
 }
+
+void interseccao2(string recebe);
+
+void interseccoes1(){
+    cout<<"=======interações e intersecções======="<<endl;
+    queue<vector<string>> help = combinacoes;
+    vector<string> help2;
+    while(!help.empty()){
+        help2=help.front();
+        help.pop();
+        for(auto &i:help2)
+            interseccao2(i);
+        cout<<endl;
+        help2.clear();
+    }
+    cout<<endl;
+}
+
+//chamada anterior para que o interseccao2 possa ler as funções posteriores
+vector<int> interseccao3(vector<int> v1, vector<int> v2);
+void intersectionHash(vector<int> v);
+
+void interseccao2(string recebe){
+    vector<int> auxilia;
+    char vetor[25];
+    //int cont=0;
+    strcpy(vetor, recebe.c_str());
+    char *token = strtok(vetor, "-");
+    while(token!=NULL){
+        string chave = (string) token;
+        //unordered_map<string, vector<int>>::const_iterator find = texto.find({chave});
+        cout<< (string) token <<endl;
+        token=strtok(NULL,"-");
+        // if( !(find == texto.end()) ){   
+        //     if(cont == 0){
+        //         auxilia=find->second;
+        //         cont++;
+        //     }else
+        //         auxilia=interseccao3(auxilia, find->second);
+        // }//else if( !(auxilia.empty()) )
+            //intersectionHash(auxilia);
+    }
+}
+
+vector<int> interseccao3(vector<int> v1, vector<int> v2){
+    vector<int> aux;
+    sort(v1.begin(), v1.end());
+    sort(v2.begin(), v2.end());
+    set_intersection(v1.begin(), v1.end(), v2.begin(), v2.end(), back_inserter(aux));
+    return aux;
+}
+
+/* 
+void intersectionHash(vector<int> v){
+    vector<int> interseccoesEntreCombinacoesEHash1;
+    int cont = 0;
+    for (auto mapIt = begin(classes3); mapIt != end(classes3); ++mapIt){
+        switch (cont){
+            case 0:
+                // interseccoesEntreCombinacoesEHash1 = intersectionHash(mapIt->second);
+                // cont1 += interseccoesEntreCombinacoesEHash1.size();
+                // interseccoesEntreCombinacoesEHash1.clear();
+                break;
+            case 1:
+                // interseccoesEntreCombinacoesEHash1 = intersectionHash(v, mapIt->second);
+                // cont2 += interseccoesEntreCombinacoesEHash1.size();
+                // interseccoesEntreCombinacoesEHash1.clear();
+                break;
+            case 2:
+                // interseccoesEntreCombinacoesEHash1 = intersectionHash(v, mapIt->second);
+                // cont3 += interseccoesEntreCombinacoesEHash1.size();
+                // interseccoesEntreCombinacoesEHash1.clear();
+                break;
+        }
+        cont++;
+    }
+}
+*/
 
 void interseccaoEntreLinhas(){
     cout<<"Intersecções entre as combinações e a Hash 1"<<endl;
-    string line;
-    char *output;
-    char *token;
-    ifstream myfile ("src/texto.txt"); 
-    if (myfile.is_open()){
-        while (! myfile.eof() ){
-            for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt){ 
-                getline (myfile,line);
-                output = const_cast<char *>(line.c_str());
-                token = strtok(output, ",");
-                if(mapIt->first == token){
-                    cout<<token<<endl;
-                    encontroCombinacoes.push_back(token);
-                }
-            }
-        }
-        myfile.close();
-    }
-    else cout << "Não abriu o arquivo!!"; 
-    myfile.close();
 }
 
 void interseccaoClasses(){

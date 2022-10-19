@@ -117,10 +117,10 @@ void etapa3(){
 				system("clear || cls"); 
 				break;
 			case 1:
-				void interseccaoEntreLinhas();
+				interseccoes1();
 				break;
 			case 2:
-                void interseccaoClasses();
+            	interseccaoClasses();
 				break;
 			case 111:
 				cout<<"saindo..."<<endl;
