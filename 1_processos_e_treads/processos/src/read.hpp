@@ -120,20 +120,17 @@ void ler()
                 token = strtok(NULL, ",");
                 break;
             }
-            else
+            key = to_string(coluna) + ", " + string(token);
+            linhaStr = to_string(linha);
+            texto[key].push_back(linhaStr);
+            token = strtok(NULL, ",");
+            if (coluna < 4)
             {
-                key = to_string(coluna) + ", " + string(token);
-                linhaStr = to_string(linha);
-                texto[key].push_back(linhaStr);
-                token = strtok(NULL, ",");
-                if (coluna < 4)
-                {
-                    string teste;
-                    teste = to_string(coluna) + ", " + string(token);
-                    aux.push_back(teste);
-                }
-                coluna++;
+                string teste;
+                teste = to_string(coluna) + ", " + string(token);
+                aux.push_back(teste);
             }
+            coluna++;
         }
         antesCombinacao1.push(aux);
         aux.clear();
@@ -186,22 +183,19 @@ void lerT()
                 cout << key << endl;
                 classes3[key].push_back(linha);
                 token = strtok(NULL, ",");
+                coluna=1;
                 break;
             }
-            else
-            {
-                key = string(token);
-                linhaStr = to_string(linha);
-                texto2[key].push_back(linhaStr);
-                token = strtok(NULL, ",");
-                if (coluna < 4)
-                {
-                    string teste;
-                    teste = to_string(coluna) + ", " + string(token);
-                    aux.push_back(teste);
-                }
-                coluna++;
+            key = string(token);
+            linhaStr = to_string(linha);
+            texto2[key].push_back(linhaStr);
+            token = strtok(NULL, ",");
+            if(coluna<4){ 
+                string teste;
+                teste = to_string(coluna) + ", " + string(token);
+                aux.push_back(teste);
             }
+            coluna++;
         }
         antesCombinacao2.push(aux);
         aux.clear();
