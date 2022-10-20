@@ -50,42 +50,21 @@ Em relação ao funcionamento do software, o núcleo central da aplicação é a
 
 
 <h2>Etapa 3</h2>
+Para o prossegimento do software de sistemas operacionais, a terceira etapa foi focada em fazer intersecções e combinações matemáticas com os conjuntos de dados D e T. Assim foi pensado um menu interativo para que o usuário pudesse ter acesso a todas as funcionalidades do sistema de estudo. É possível checar cada etapa do software através da sequência crescente de opções do menu da aplicação. Tendo isso em vista, é importante salientar que para o funcionamento do software é necessário que o usuário não pule nenhuma etapa do menu, visto que ao clicar na etapa os processos são carregados com dados necessários para as outras etapas do desenvolvimento. 
 
-Para esta terceira etapa reorganizei a etapa 2 para que pudesse estar no padrão para as intersecções e combinações que a terceira iria exigir, assim foi melhorado a parte das combinações, utilizando um algoritmo pre moldado de combinações, além de separar em classes os itens pegos na primeira etapa, para que pudesse ser realizada a última demanda da Etapa 3. Assim para o cumprimento da atual etapa guardei as combinações num arquivo para que eu pudesse lê-lo e tokeniza-lo assim poderia comparar com a tabela hash do exercício 1 e tirar as intersecções. Segue abaixo o código usado para tal:
+![image](https://user-images.githubusercontent.com/78708394/197078189-e49a56d9-de1c-41fe-a977-99d10c2ef3bb.png)
 
-~~~
-void interseccaoEntreLinhas(){
-    cout<<"Intersecções entre as combinações e a Hash 1"<<endl;
-    string line;
-    char *output;
-    char *token;
-    ifstream myfile ("src/texto.txt"); 
-    if (myfile.is_open()){
-        while (! myfile.eof() ){
-            for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt){ 
-                getline (myfile,line);
-                output = const_cast<char *>(line.c_str());
-                token = strtok(output, ",");
-                if(mapIt->first == token){
-                    cout<<token<<endl;
-                    encontroCombinacoes.push_back(token);
-                }
-            }
-        }
-        myfile.close();
-    }
-    else cout << "Não abriu o arquivo!!"; 
-    myfile.close();
-}
-~~~
+Nesta etapa tive que consertar algumas coisas da etapa dois, sendo um deles a combinação final, para que eu pudesse usa-lá na etapa 3, assim sendo, foi consertado a combinação com um algoritmo encontrado no stackOverflow, o qual facilitava a confecção do software. Por fim, para a etapa três, adicionei classes de flores na etapa 1, para que pudessem ser utilizadas na etapa 4. 
 
-Na segunda parte do trabalho foi pedido a intersecção dos valores da combinação com os valores de cada classe de flor para que pudessemos encontrar a classe que tivesse mais iterações, entretando como o tempo não jogou ao meu favor nessas últimas semanas não pude concluir esta etapa do processo, sendo preterida para a Etapa 4.
-
-<strong>Compilação</strong><p>
-    
-    Para utilizar o software e observar os passos é necessário seguir a ordem de etapas e dentro delas seguir a ordem crescente de opções, clicando em todas para que possa ser carregado os processos. Vale ressaltar que nessa etapa não teve apenas a implementação dos requesitos da terceira etapa mas sim a melhora da primeira etapa e melhora da combinação da segunda etapa, sendo um trabalho bem mais abrangente do que as etapas anteriores. O programa foi feito em ambiente Windows 11, sendo executado no WSL(virtualizador do Linux Ubuntu), utilizando makefile. 
+Falando mais sobre a codificação, optei por utilizar métodos próprios de intersecções para confecção do software, sendo um deles a comparação dos tokens das combinações com os valores de chave da hash de itens D, assim tendo as intersecções em mãos passei a armazenalas em um vector de vector de inteiros para que eu pudesse fazer comparações númericas no conjunto, visto que comparações numéricas são mais baratas e fáceis, computacionalmente falando do que comparar valores em string. Tendo isso em mente, realizei as intersecções linha a linha utilizando o set para guarda-las, visto que o set não pega valores repetidos, assim concluindo a etapa 3 do projeto de estudo. Por fim foi dado início a etapa 4.
 
 <h2>Etapa 4</h2>
+
+Na etapa 4, peguei os valores de intersecção do conjunto da hash para comparar com o conjunto das classes, assim encontrando as intersecções em cada classe de flor individualmente, e somando os valores associados a cada flor. 
+
+<h2>Etapa 5</h2>
+
+<h2>Etapa 6</h2>
 
 <h1>Referências</h1>
 
