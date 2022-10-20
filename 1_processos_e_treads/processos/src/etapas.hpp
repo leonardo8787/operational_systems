@@ -108,7 +108,8 @@ void etapa3(){
 		cout<<"========================================================"<<endl;
 		cout<<"===MENU==="<<endl;
 		cout<<"1 - intersecção entre as linhas"<<endl;
-		cout<<"2 - intersecção com as classes das flores"<<endl;
+		cout<<"2 - printa as intersecções"<<endl;
+		cout<<"3 - intersecção com as classes das flores"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
@@ -120,7 +121,9 @@ void etapa3(){
 				interseccoes1();
 				break;
 			case 2:
-            	interseccaoClasses();
+				printaVectorProcura();
+			case 3:
+            	
 				break;
 			case 111:
 				cout<<"saindo..."<<endl;

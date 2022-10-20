@@ -37,6 +37,8 @@ string auxCombinates;
 vector<string> encontroCombinacoes;
 vector<string> encontroCombinacoesClasses;
 
+vector<string> pegaInterseccao; // intersecção2
+
 class Ler
 {
 public:
@@ -44,9 +46,6 @@ public:
     void lerT();
     void printFilaDeVector();
     void poeNaFilaALinha();
-    // void combinacao();
-    // void processaFila();
-    // void escreveCombinacao();
     void Hash();
     void Hash2();
     void HashNomes1();
@@ -61,9 +60,7 @@ public:
     void printaVectorProcura(vector<string> v);
     void interseccao2(string recebe);
     void interseccao3(vector<int> v1, vector<int> v2);
-    void intersectionHash(vector<int> v);
-    void interseccaoEntreLinhas();
-    void interseccaoClasses();
+    void interseccaoClasse();
 };
 
 void ler()
@@ -112,7 +109,7 @@ void ler()
             }
             else
             {
-                key = string(token);
+                key = to_string(coluna) + ", " + string(token);
                 linhaStr = to_string(linha);
                 texto[key].push_back(linhaStr);
                 token = strtok(NULL, ",");
@@ -268,35 +265,6 @@ void poeNaFilaALinha()
 
     file.close();
 }
-/*
-void processaFila(){
-    for(auto i:tokens){
-        for(auto j:texto){
-            if(j.f==i){
-                recebe.push_back(j.f);
-            }
-        }
-    }
-    cout<<"Resultados:"<<endl;
-    for(auto k:recebe){
-        cout<<k<<endl;
-    }
-}
-
-void combinacao1(){
-    vector<string> x;
-    for(auto &i:recebe){
-        x.push_back(i);
-        combinacoes.push_back(x);
-    }
-    // for(auto i:combinacoes){
-    //     for(auto j:i){
-    //         cout<<j<<" ";
-    //     }
-    //     cout<<endl;
-    // }
-}
-*/
 
 void Hash()
 {
@@ -507,7 +475,6 @@ void interseccoes1()
     cout << endl;
 }
 
-// chamada anterior para que o interseccao2 possa ler as funções posteriores
 vector<int> interseccao3(vector<int> v1, vector<int> v2);
 void intersectionHash(vector<int> v);
 void printaVectorProcura(vector<string> v);
@@ -515,6 +482,7 @@ void printaVectorProcura(vector<string> v);
 void interseccao2(string recebe)
 {
     vector<int> auxilia;
+    vector<string> procura;
     char vetor[25];
     int cont = 0;
     strcpy(vetor, recebe.c_str());
@@ -522,105 +490,25 @@ void interseccao2(string recebe)
     while (token != NULL)
     {
         string chave = (string) token;
-        // unordered_map<string, vector<int>>::const_iterator procura = texto[chave]; //texto.find(chave);
-        vector<string> procura = texto[chave];
-        //cout << typeid(texto[chave]).name() << endl;
-        cout << chave << endl;
+        procura.push_back(chave);
         token = strtok(NULL, "-");
-
-        // if( chave == texto.find(chave)){
-        //     cout<<"Deu certo"<<endl;
-        // }
-
-
-        //teste 1
-        // if(chave == texto[chave]){
-        //     if(cont == 0   ){
-        //         // cont++;
-        //         cout<<"entrou em 0"<<endl;
-        //     }else{
-        //         cout<<"Não entrou em 0"<<endl;
-        //     }
-        // }
-
-        //teste 2
-        // if( texto.find(chave) != texto.end()){
-        //     if(cont == 0){
-        //         procura[chave].push_back(chave);
-        //         auxilia=find->second;
-        //         cont++;
-        //     }else
-        //         auxilia=interseccao3(auxilia, find->second);
-        // }else{
-        //     cout<<"teste"<<endl;
-        // }
-
-        //teste 3
-        // for(auto it=procura.begin(); it != procura.end(); ++it){
-        //     if( !(*it == texto.end()) ){
-        //         if(cont == 0){
-        //             auxilia= *it;//find->second;
-        //             cont++;
-        //         }else
-        //             auxilia=interseccao3(auxilia, *it);//find->second);
-        //     }else //if( !(auxilia.empty()) )
-        //         intersectionHash(auxilia);
-        // }
-
-
+        cout<<"chave: "<<chave<<endl;
+        if (texto.find(chave) != texto.end()) {
+            cout << " Chave encontrada! :" << chave << endl;
+            pegaInterseccao.push_back(chave);
+        }else
+            cout<< " chave não encontrada"<<endl;
     }
 }
 
-void printaVectorProcura(vector<string> v){
-    cout<<"printa vector PROCURA"<<endl;
-    for(auto &i:v)
+void printaVectorProcura(){
+    for(auto i:pegaInterseccao){
         cout<<i<<endl;
-}
-
-vector<int> interseccao3(vector<int> v1, vector<int> v2)
-{
-    vector<int> aux;
-    sort(v1.begin(), v1.end());
-    sort(v2.begin(), v2.end());
-    set_intersection(v1.begin(), v1.end(), v2.begin(), v2.end(), back_inserter(aux));
-    return aux;
-}
-
-/*
-void intersectionHash(vector<int> v){
-    vector<int> interseccoesEntreCombinacoesEHash1;
-    int cont = 0;
-    for (auto mapIt = begin(classes3); mapIt != end(classes3); ++mapIt){
-        switch (cont){
-            case 0:
-                // interseccoesEntreCombinacoesEHash1 = intersectionHash(mapIt->second);
-                // cont1 += interseccoesEntreCombinacoesEHash1.size();
-                // interseccoesEntreCombinacoesEHash1.clear();
-                break;
-            case 1:
-                // interseccoesEntreCombinacoesEHash1 = intersectionHash(v, mapIt->second);
-                // cont2 += interseccoesEntreCombinacoesEHash1.size();
-                // interseccoesEntreCombinacoesEHash1.clear();
-                break;
-            case 2:
-                // interseccoesEntreCombinacoesEHash1 = intersectionHash(v, mapIt->second);
-                // cont3 += interseccoesEntreCombinacoesEHash1.size();
-                // interseccoesEntreCombinacoesEHash1.clear();
-                break;
-        }
-        cont++;
     }
 }
-*/
 
-void interseccaoEntreLinhas()
-{
-    cout << "Intersecções entre as combinações e a Hash 1" << endl;
-}
-
-void interseccaoClasses()
-{
-    cout << "Intersecção entre as Classes de Flores não concluída a tempo :/" << endl;
+void interseccaoClasse(){
+    
 }
 
 #endif
