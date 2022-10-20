@@ -19,12 +19,19 @@ void menu(){
 		cout<<"Aluno: Leonardo de Oliveira Campos"<<endl;
 		cout<<"Centro Federal de Educação Tecnológica de Minas Gerais"<<endl;
 		cout<<"========================================================"<<endl;
+
+		cout<<"Este trabalho tem por objetivo desenvolver o aprendizado" 
+		"em processos e threads dentro do escopo de sistemas operacionais"<<endl;
+
+
 		cout<<"===MENU==="<<endl;
 		cout<<"0 - limpa tela"<<endl;
 		cout<<"1 - Etapa 1"<<endl;
 		cout<<"2 - Etapa 2"<<endl;
 		cout<<"3 - Etapa 3"<<endl;
 		cout<<"4 - Etapa 4"<<endl;
+		cout<<"5 - Etapa 5"<<endl;
+		cout<<"6 - Etapa 6"<<endl;
 		cout<<"111 - sair"<<endl;
 		cin>>op;
 		switch (op)

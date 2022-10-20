@@ -13,6 +13,8 @@ class Etapas{
 		void etapa2();
 		void etapa3();
 		void etapa4();
+		void etapa5();
+		void etapa6();
 };
 
 void etapa1(){
@@ -147,7 +149,75 @@ void etapa3(){
 }
 
 void etapa4(){
+	int op;
+	do{
+		cout<<"========================================================"<<endl;
+		cout<<"Aluno: Leonardo de Oliveira Campos"<<endl;
+		cout<<"Centro Federal de Educação Tecnológica de Minas Gerais"<<endl;
+		cout<<"========================================================"<<endl;
+		cout<<"===MENU==="<<endl;
+		cout<<"1 - "<<endl;
+		cout<<"2 - "<<endl;
+		cout<<"111 - voltar"<<endl;
+		cin>>op;
+		switch (op)
+		{
+			case 0:
+				system("clear || cls"); 
+				break;
+			default:
+				cout<<"Escolha uma opção válida"<<endl;
+				break;
+		}
+	}while(op != 111);
+}
 
+void etapa5(){
+	int op;
+	do{
+		cout<<"========================================================"<<endl;
+		cout<<"Aluno: Leonardo de Oliveira Campos"<<endl;
+		cout<<"Centro Federal de Educação Tecnológica de Minas Gerais"<<endl;
+		cout<<"========================================================"<<endl;
+		cout<<"===MENU==="<<endl;
+		cout<<"1 - "<<endl;
+		cout<<"2 - "<<endl;
+		cout<<"111 - voltar"<<endl;
+		cin>>op;
+		switch (op)
+		{
+			case 0:
+				system("clear || cls"); 
+				break;
+			default:
+				cout<<"Escolha uma opção válida"<<endl;
+				break;
+		}
+	}while(op != 111);
+}
+
+void etapa6(){
+	int op;
+	do{
+		cout<<"========================================================"<<endl;
+		cout<<"Aluno: Leonardo de Oliveira Campos"<<endl;
+		cout<<"Centro Federal de Educação Tecnológica de Minas Gerais"<<endl;
+		cout<<"========================================================"<<endl;
+		cout<<"===MENU==="<<endl;
+		cout<<"1 - "<<endl;
+		cout<<"2 - "<<endl;
+		cout<<"111 - voltar"<<endl;
+		cin>>op;
+		switch (op)
+		{
+			case 0:
+				system("clear || cls"); 
+				break;
+			default:
+				cout<<"Escolha uma opção válida"<<endl;
+				break;
+		}
+	}while(op != 111);
 }
 
 #endif 
