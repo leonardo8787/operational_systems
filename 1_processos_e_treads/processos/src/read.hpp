@@ -38,6 +38,8 @@ vector<string> encontroCombinacoes;
 vector<string> encontroCombinacoesClasses;
 
 vector<string> pegaInterseccao; // intersecção2
+queue<vector<string>> pegaInterseccao2; // intersecção dos valores associados as chaves
+queue<vector<string>> multiInterseccoes;
 
 class Ler
 {
@@ -61,6 +63,8 @@ public:
     void interseccao2(string recebe);
     void interseccao3(vector<int> v1, vector<int> v2);
     void interseccaoClasse();
+    void printFilaVector();
+    vector<string> intersection(vector<string> v1, vector<string> v2);
 };
 
 void ler()
@@ -100,7 +104,7 @@ void ler()
         while (token != NULL)
         {
             if (coluna == 5)
-            { // aqui deveria ser 4 e não 5 !!!
+            { 
                 key = string(token);
                 cout << key << endl;
                 classes2[key].insert(linha);
@@ -168,7 +172,7 @@ void lerT()
         while (token != NULL)
         {
             if (coluna == 5)
-            { // aqui deveria ser 4 e não 5 !!!
+            { 
                 key = string(token);
                 cout << key << endl;
                 classes3[key].push_back(linha);
@@ -181,7 +185,7 @@ void lerT()
                 linhaStr = to_string(linha);
                 texto2[key].push_back(linhaStr);
                 token = strtok(NULL, ",");
-                if (coluna >= 0 && coluna < 4)
+                if (coluna < 4)
                 {
                     string teste;
                     teste = to_string(coluna) + ", " + string(token);
@@ -220,14 +224,26 @@ void printFilaDeVector()
 
 void classesFlorMetodo()
 {
+    int cont = 0;
     for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
     {
-        cout << "{" + mapIt->first + "}"
-             << " : ";
+        if(cont == 0){
+            cout << cont << " : ";
+            cont1++; 
+        }else if(cont == 1){
+            cout << cont << " : ";
+            cont2++; 
+        }else if(cont == 2){
+            cout << cont << " : ";
+            cont3++;
+        }
         for (auto c : mapIt->second)
             cout << c << " ";
         cout << endl;
+
+        cont++;
     }
+    cout<<endl<<" 0 - versicolor \n 1 - virginica \n 2 - setosa "<<endl;
 }
 
 void poeNaFilaALinha()
@@ -478,27 +494,70 @@ void interseccoes1()
 vector<int> interseccao3(vector<int> v1, vector<int> v2);
 void intersectionHash(vector<int> v);
 void printaVectorProcura(vector<string> v);
+vector<int> intersection(vector<int> v1, vector<int> v2);
 
 void interseccao2(string recebe)
 {
-    vector<int> auxilia;
+    vector<string> auxilia;
+    vector<string> auxilia2;
     vector<string> procura;
+    vector<vector<string>> procura2;
+    bool primeiroLoop=true;
     char vetor[25];
     int cont = 0;
     strcpy(vetor, recebe.c_str());
     char *token = strtok(vetor, "-");
+    cout << "[" << recebe << "]" << endl;
     while (token != NULL)
     {
         string chave = (string) token;
         procura.push_back(chave);
         token = strtok(NULL, "-");
         cout<<"chave: "<<chave<<endl;
+        //unordered_map<string, vector<string>> linhaSecond = texto.find(chave);
         if (texto.find(chave) != texto.end()) {
+            vector<string> aux2;
             cout << " Chave encontrada! :" << chave << endl;
-            pegaInterseccao.push_back(chave);
+            //pegaInterseccao.push_back(chave);
+            //pegaInterseccao2.push_back(texto.find(chave)->second);
+            if(primeiroLoop == true){
+                for(auto i:texto.find(chave)->second){
+                    auxilia.push_back(i);
+                }
+                //auxilia = texto.find(chave)->second;
+                primeiroLoop = false;
+            }else{
+                vector<int> a;
+                vector<int> b;
+                for(auto &i: texto.find(chave)->second){
+                    int c = atoi(i);
+                    a.push_back(c);
+                }
+                for(auto &i:auxilia){
+                    int c = atoi(i);
+                    b.push_back(c);
+                }
+                auxilia2 = intersection(a,b);
+            }
         }else
             cout<< " chave não encontrada"<<endl;
     }
+
+    for(auto &c : auxilia)
+        cout << c << " ";
+
+    cout << endl;
+}
+
+vector<int> intersection(vector<int> v1, vector<int> v2)
+{
+    vector<string> v3;
+
+    sort(v1.begin(), v1.end());
+    sort(v2.begin(), v2.end());
+    set_intersection(v1.begin(), v1.end(), v2.begin(), v2.end(), back_inserter(v3));
+
+    return v3;
 }
 
 void printaVectorProcura(){
@@ -507,8 +566,64 @@ void printaVectorProcura(){
     }
 }
 
+// void printaPegaInterseccao2(){
+//     // for(auto i:pegaInterseccao2){
+//     //     for(auto j:i){
+//     //         cout<<j<<" ";
+//     //     }
+//     //     cout<<endl;
+//     // }
+// }
+
+void printFilaVector(){
+    queue<vector<string>> help = pegaInterseccao2;
+    vector<string> help2;
+    while (!help.empty())
+    {
+        help2 = help.front();
+        help.pop();
+        for (auto &i : help2)
+            cout<<i<<endl;
+        cout << endl;
+        help2.clear();
+    }
+    cout << endl;
+}
+
 void interseccaoClasse(){
-    
+    cout<<"Interseccções da versiculor"<<endl;
+    int cont =0;
+    for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
+    {
+        if(cont == 0){
+            for (auto c : mapIt->second)
+                cout << c << " ";
+            cout << endl;
+        }
+        break;
+    }
+    cont++;
+    cout<<"Interseccções da virginica"<<endl;
+    for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
+    {
+        if(cont == 1){
+            for (auto c : mapIt->second)
+                cout << c << " ";
+            cout << endl;
+        }
+        break;
+    }
+    cont++;
+    cout<<"setosa"<<endl;
+    for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
+    {
+        if(cont == 2){
+            for (auto c : mapIt->second)
+                cout << c << " ";
+            cout << endl;
+        }
+        break;
+    }
 }
 
 #endif
