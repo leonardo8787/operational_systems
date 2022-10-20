@@ -156,14 +156,16 @@ void etapa4(){
 		cout<<"Centro Federal de Educação Tecnológica de Minas Gerais"<<endl;
 		cout<<"========================================================"<<endl;
 		cout<<"===MENU==="<<endl;
-		cout<<"1 - "<<endl;
-		cout<<"2 - "<<endl;
+		cout<<"1 - Interações com Classe de flores"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
 		{
 			case 0:
 				system("clear || cls"); 
+				break;
+			case 1:
+				numeroClassesIteracoes();
 				break;
 			default:
 				cout<<"Escolha uma opção válida"<<endl;

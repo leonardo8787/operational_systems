@@ -42,6 +42,11 @@ queue<vector<string>> pegaInterseccao2; // intersecção dos valores associados 
 vector<vector<int>> pegaInterseccao3;
 set<int> multiInterseccoes;
 
+//classes de flores
+vector<int> versiculor;
+vector<int> virginica;
+vector<int> setosa;
+
 class Ler
 {
 public:
@@ -68,6 +73,7 @@ public:
     void interseccaoDasCombinacoes();
     //vector<string> intersection(vector<string> v1, vector<string> v2);
     //void interseccaoDasCombinacoes();
+    void numeroClassesIteracoes();
 };
 
 void ler()
@@ -577,9 +583,6 @@ void printFilaVector(){
 }
 
 void interseccaoClasse(){
-    vector<int> versicolor;
-    vector<int> virginica;
-    vector<int> setosa;
     cout<<"Interseccções da versiculor"<<endl;
     int cont =0;
     for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
@@ -590,6 +593,7 @@ void interseccaoClasse(){
                     cout << c << " ";
                     if(c == i){
                         cont1++;
+                        versiculor.push_back(c);
                     }
                 }
                 cout << endl;
@@ -607,6 +611,7 @@ void interseccaoClasse(){
                     cout << c << " ";
                     if(c == i){
                         cont2++;
+                        virginica.push_back(c);
                     }
                 }
                 cout << endl;
@@ -624,6 +629,7 @@ void interseccaoClasse(){
                     cout << c << " ";
                     if(c == i){
                         cont3++;
+                        setosa.push_back(c);
                     }
                 }
                 cout << endl;
@@ -636,6 +642,31 @@ void interseccaoClasse(){
     cout<<" versiculor: "<<cont1<<endl;
     cout<<" virginica: "<<cont2<<endl;
     cout<<" setosa: "<<cont3<<endl;
+}
+
+void numeroClassesIteracoes(){
+    cout<<"ETAPA 4"<<endl<<endl;
+    int soma1=0;
+    int soma2=0; 
+    int soma3=0;
+    cout<<"Versiculor"<<endl;
+    for(auto i:versiculor){
+        cout<<i<<" ";
+        soma1+=i;
+    }
+    cout<<"Soma versiculor: "<<soma1<<endl<<endl;
+    cout<<"Virginica"<<endl;
+    for(auto i:virginica){
+        cout<<i<<" ";
+        soma2+=i;
+    }
+    cout<<"Soma Virginica: "<<soma2<<endl<<endl;
+    cout<<"Setosa"<<endl;
+    for(auto i:setosa){
+        cout<<i<<" ";
+        soma3+=i;
+    }
+    cout<<"Soma setosa: "<<soma3<<endl<<endl;
 }
 
 #endif
