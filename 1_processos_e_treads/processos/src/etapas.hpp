@@ -112,7 +112,7 @@ void etapa3(){
 		cout<<"3 - printa valores da intersecção"<<endl;
 		cout<<"4 - intersecção com as classes das flores"<<endl;
 		cout<<" "<<endl;
-		cout<<"9 - printa Fila de vectors"<<endl;
+		cout<<"9 - Intersecção das combinações"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
@@ -124,16 +124,17 @@ void etapa3(){
 				interseccoes1();
 				break;
 			case 2:
-				printaVectorProcura();
+				interseccaoDasCombinacoes();
 				break;
 			case 3:
-				//printaPegprinaInterseccao2();
+				printaPegaInterseccao2();
+				// printFilaVector();
 				break;
 			case 4:
             	interseccaoClasse();
 				break;
 			case 9:
-				printFilaVector();
+				interseccaoDasCombinacoes();
 				break;
 			case 111:
 				cout<<"saindo..."<<endl;
