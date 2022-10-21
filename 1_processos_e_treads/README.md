@@ -22,7 +22,7 @@ Já a base T representará os processos a serem executados, cada um produzindo u
 Para resolução da etapa 1 usei um "unoder_map" para ser a hash dos itens D, no qual seria alocados os números como chave e suas aparições como valores.
 ![image](https://user-images.githubusercontent.com/78708394/197238271-dc03a069-d6c3-4ec0-a2f0-ab71ef59f918.png)
 
-Menu
+<strong>Menu</strong><p>
 ![menu etapa 1](https://user-images.githubusercontent.com/78708394/197241245-1623224e-8711-44db-941a-58dbb70e3634.png)
 
 
@@ -30,7 +30,7 @@ Menu
 
 ![etapa 2](https://user-images.githubusercontent.com/78708394/197240421-2064cae4-452f-4952-90e4-0c1c3ac61665.png)
 
-Menu
+<strong>Menu</strong><p>
 ![menu etapa 2](https://user-images.githubusercontent.com/78708394/197241288-577cec32-de0a-4f89-a259-23d82bed7302.png)
 
 
@@ -38,14 +38,14 @@ Menu
 
 ![etapa 3](https://user-images.githubusercontent.com/78708394/197240533-71488f10-6607-4af8-9257-9c2b4a9dd133.png)
 
-Menu
+<strong>Menu</strong><p>
 ![menu etapa 3](https://user-images.githubusercontent.com/78708394/197241332-dfa3a214-2308-474e-ac20-f8135f97caf6.png)
 
 <h2>Resolução Etapa 4</h2>
 
 ![etapa 4](https://user-images.githubusercontent.com/78708394/197239728-617f40e4-7960-46ec-87a1-bbe6236eb0f9.png)
 
-Menu
+<strong>Menu</strong><p>
 ![menu etapa 4](https://user-images.githubusercontent.com/78708394/197241358-54ce980a-da46-4f06-808a-0beaf65d6048.png)
 
 
