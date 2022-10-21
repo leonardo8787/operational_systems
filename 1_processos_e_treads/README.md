@@ -23,6 +23,7 @@ Para resolução da etapa 1 usei um "unoder_map" para ser a hash dos itens D, no
 ![image](https://user-images.githubusercontent.com/78708394/197238271-dc03a069-d6c3-4ec0-a2f0-ab71ef59f918.png)
 
 <strong>Menu</strong><p>
+Através do menu é possível acessar cada processo individualmente, foi melhor fazer dessa forma para que fosse obtido o resultado visual das iterações entre processos, assim é necessário que o usuário clique em todas as opções em ordem crescente, para que tenha o resultado de cada processo individualmente e seja carregado para os processos subsequêntes, assim se o usuário pular uma opção os processos não estarão carregados para exucição desta. Isso vale para todas as etapas.
 ![menu etapa 1](https://user-images.githubusercontent.com/78708394/197241245-1623224e-8711-44db-941a-58dbb70e3634.png)
 
 
