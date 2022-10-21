@@ -23,11 +23,15 @@ Para resolução da etapa 1 usei um "unoder_map" para ser a hash dos itens D, no
 ![image](https://user-images.githubusercontent.com/78708394/197238271-dc03a069-d6c3-4ec0-a2f0-ab71ef59f918.png)
 
 <h2>Resolução Etapa 2</h2>
-![etapa 2](https://user-images.githubusercontent.com/78708394/197240111-5c42fc3b-6220-493b-bc71-558f1b3dcd17.png)
+
+![etapa 2](https://user-images.githubusercontent.com/78708394/197240421-2064cae4-452f-4952-90e4-0c1c3ac61665.png)
+
 
 
 <h2>Resolução Etapa 3</h2>
-![etapa 3](https://user-images.githubusercontent.com/78708394/197240093-1e34eb68-0e1f-4613-9591-a183f2d149ca.png)
+
+![etapa 3](https://user-images.githubusercontent.com/78708394/197240533-71488f10-6607-4af8-9257-9c2b4a9dd133.png)
+
 
 
 <h2>Resolução Etapa 4</h2>
