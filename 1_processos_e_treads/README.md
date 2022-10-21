@@ -19,52 +19,18 @@ Já a base T representará os processos a serem executados, cada um produzindo u
 
 <h2>Resuloções Etapa 1</h2>
 
-<p align = "center">
-    <strong>Menu</strong>
+Para resolução da etapa 1 usei um "unoder_map" para ser a hash dos itens D, no qual seria alocados os números como chave e suas aparições como valores.
+![image](https://user-images.githubusercontent.com/78708394/197238271-dc03a069-d6c3-4ec0-a2f0-ab71ef59f918.png)
 
-<p align = "center">
-    <img src="https://github.com/leonardo8787/operational_systems/blob/main/imagens/menu%20.png" width="350"></img>
-    
-No Menu é possível ver todas as opções do software, até o presente momento. Para a primeira atividade foi proposto a procura de numerais dentro de uma pequena base de dados, informando a quantidade de aparições e suas respectivas posições. Para uma melhor compreensão segue as imagens dos resultados:
+<h2>Resolução Etapa 2</h2>
+![image](https://user-images.githubusercontent.com/78708394/197238436-68484dd9-0baf-4817-bd16-9ae356167832.png)
 
+<h2>Resolução Etapa 3</h2>
+![image](https://user-images.githubusercontent.com/78708394/197238510-1d64bd63-46c1-4206-873c-c429c83ef8bc.png)
 
-<p align = "center">
-    <img src="https://github.com/leonardo8787/operational_systems/blob/main/imagens/leituraD.png" width="350"></img>
+<h2>Resolução Etapa 4</h2>
+![image](https://user-images.githubusercontent.com/78708394/197238569-284f479a-48fc-42a2-b6d3-02331000bd5d.png)
 
-Esta primeira leitura dos dados é essencial para que as informações sejam inseridas na Tabela Hash. A tabela Hash foi usada para manutenção dos dados visto que a sua procura tem custo associado a O(1). Em seguida é mostrado a busca pelos números das flores e suas posições.
-
-<p align = "center">
-    <img src="https://github.com/leonardo8787/operational_systems/blob/main/imagens/procuraD.png" width="350"></img>
-    
-Na imagem acima o primeiro colchete indica quantas vezes a flor aparece, sendo ligada a seguinte equação matemática: n-1; na frente dos dois pontos é possível ver a incidência de cada numeral. A próxima imagem mostra os nomes das flores por index:
-
-<p align = "center">
-    <img src="https://github.com/leonardo8787/operational_systems/blob/main/imagens/leituraFlor.png" width="350"></img>
-
-
-<h2>Resoluções Etapa 2</h2>
-
-Ao entrar no software haverá algumas mudanças no software em relação a versão anterior entregue ao professor. Vale ressaltar que alguns partes do desenvolvimento mudei alguns parâmetros da primeira etapa, sem alterar os resultados finais, mas para melhor desenvolvimento do código. Voltando a portabilidade do software, há um menu que leva o usuário direto as etapas a serem seguidas, na primeira etapa é necessário clicar na primeira e na segunda opção, para que a tabela HASH seja carregada. Seguindo o usuário terá que voltar digitando no terminal a opção 111, voltando ao menu principal, onde há as escolhas das etapas, agora será escolhida a segunda opção. Na segunda opção o usuário clicará na primeira opção, onde o arquivo T será carregado no vector, em seguida a opção 2, onde as informações serão processadas, por fim na opção três para que os dados sejam arquivados em um arquivo.txt. 
-
-Em relação ao funcionamento do software, o núcleo central da aplicação é a leitura de arquivos inserindo-os em uma tabela hash e depois checando as suas aparições nos arquivos D e T. Para isso foi usado uma estrutura simples de leitura de arquivo que joga todas as informações tokenizadas para dentro da tabela hash, depois é chegada a hora de comparar os resultados da tabela T com os resultados da tabela D, utilizando um vetor para os dados tokenizados do arquivo T em comparação com os arquivos da tabela hash, que é dividida em chave e valores, sendo que as comparações são feitas utilizando a chave de cada hash. Assim sendo feitas tais comparações é hora de achar os dados que estão iguais no mesmo index de ambos arquivos. Depois desses passos o software faz uma combinação entre os valores escrevendoos em um arquivo txt. Assim foi elaborado o software até o presente momento. 
-
-
-<h2>Etapa 3</h2>
-Para o prossegimento do software de sistemas operacionais, a terceira etapa foi focada em fazer intersecções e combinações matemáticas com os conjuntos de dados D e T. Assim foi pensado um menu interativo para que o usuário pudesse ter acesso a todas as funcionalidades do sistema de estudo. É possível checar cada etapa do software através da sequência crescente de opções do menu da aplicação. Tendo isso em vista, é importante salientar que para o funcionamento do software é necessário que o usuário não pule nenhuma etapa do menu, visto que ao clicar na etapa os processos são carregados com dados necessários para as outras etapas do desenvolvimento. 
-
-![image](https://user-images.githubusercontent.com/78708394/197078189-e49a56d9-de1c-41fe-a977-99d10c2ef3bb.png)
-
-Nesta etapa tive que consertar algumas coisas da etapa dois, sendo um deles a combinação final, para que eu pudesse usa-lá na etapa 3, assim sendo, foi consertado a combinação com um algoritmo encontrado no stackOverflow, o qual facilitava a confecção do software. Por fim, para a etapa três, adicionei classes de flores na etapa 1, para que pudessem ser utilizadas na etapa 4. 
-
-Falando mais sobre a codificação, optei por utilizar métodos próprios de intersecções para confecção do software, sendo um deles a comparação dos tokens das combinações com os valores de chave da hash de itens D, assim tendo as intersecções em mãos passei a armazenalas em um vector de vector de inteiros para que eu pudesse fazer comparações númericas no conjunto, visto que comparações numéricas são mais baratas e fáceis, computacionalmente falando do que comparar valores em string. Tendo isso em mente, realizei as intersecções linha a linha utilizando o set para guarda-las, visto que o set não pega valores repetidos, assim concluindo a etapa 3 do projeto de estudo. Por fim foi dado início a etapa 4.
-
-<h2>Etapa 4</h2>
-
-Na etapa 4, peguei os valores de intersecção do conjunto da hash para comparar com o conjunto das classes, assim encontrando as intersecções em cada classe de flor individualmente, e somando os valores associados a cada flor. 
-
-<h2>Etapa 5</h2>
-
-<h2>Etapa 6</h2>
 
 <h1>Referências</h1>
 
