@@ -157,6 +157,8 @@ void etapa4(){
 		cout<<"1 - Interações com Classe de flores"<<endl;
 		cout<<"2 - passa pela cash"<<endl;
 		cout<<"3 - printa Cash"<<endl;
+		cout<<"4 - procura intersecções para nova computação"<<endl;
+		cout<<"5 - faz computação novamente"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
@@ -172,6 +174,14 @@ void etapa4(){
 				break;
 			case 3:
 				printaCash();
+				break;
+			case 4:
+				interseccaoEtapa4();
+				break;
+			case 5:
+				interseccaoDasCombinacoesEtapa4();
+				interseccaoClasseEtapa4();
+				numeroClassesIteracoesEtapa4();
 				break;
 			default:
 				cout<<"Escolha uma opção válida"<<endl;

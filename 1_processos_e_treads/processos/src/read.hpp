@@ -77,6 +77,11 @@ public:
     void numeroClassesIteracoes();
     void cashHash();
     void printaCash();
+    void interseccaoEtapa4();
+    void interseccao2Etapa4(string recebe);
+    void interseccaoDasCombinacoesEtapa4();
+    void interseccaoClasseEtapa4();
+    void umeroClassesIteracoesEtapa4();
 };
 
 void ler()
@@ -703,6 +708,159 @@ void printaCash(){
             cout << c << " ";
         cout << endl;
     }
+}
+
+void interseccao2Etapa4(string recebe);
+
+void interseccaoEtapa4(){
+    queue<vector<string>> help = combinacoes;
+    vector<string> help2;
+    while (!help.empty())
+    {
+        help2 = help.front();
+        help.pop();
+        for (auto &i : help2)
+            interseccao2Etapa4(i);
+        cout << endl;
+        help2.clear();
+    }
+    cout << endl;
+}
+
+vector<vector<int>> pegaInterseccaoEtapa4;
+set<int> multiInterseccoes2;
+
+void interseccao2Etapa4(string recebe)
+{
+    vector<string> auxilia;
+    vector<vector<string>> auxilia2;
+    vector<string> procura;
+    vector<vector<string>> procura2;
+    char vetor[25];
+    strcpy(vetor, recebe.c_str());
+    char *token = strtok(vetor, "-");
+    while (token != NULL)
+    {
+        string chave = (string) token;
+        procura.push_back(chave);
+        token = strtok(NULL, "-");
+        if (texto.find(chave) != texto.end()) {
+            vector<int> aux2;
+            for(auto i:texto.find(chave)->second){
+                int a = stoi(i);
+                aux2.push_back(a);   
+            }
+            for (auto mapIt = begin(cash); mapIt != end(cash); ++mapIt)
+            {
+                // for (auto c : mapIt->second){
+                    if(aux2 == mapIt->second){
+                        cout<<"encontrou um igual!!!"<<endl;
+                        pegaInterseccaoEtapa4.push_back(aux2);
+                        for(auto m:aux2){
+                            cout<<m<<" ";
+                        }
+                        cout<<endl;
+                    }
+                // }
+            }
+        }
+    }
+}
+
+void interseccaoDasCombinacoesEtapa4(){
+    for(auto i:pegaInterseccaoEtapa4){ 
+        for(auto j:i){
+            cout<<j<<" ";
+            multiInterseccoes.insert(j);
+        }
+    }
+}
+
+void interseccaoClasseEtapa4(){
+    cout<<"Interseccções da versiculor"<<endl;
+    int cont =0;
+    for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
+    {
+        if(cont == 0){
+            for(auto i:multiInterseccoes2){
+                    for (auto c : mapIt->second){ 
+                        cout << c << " ";
+                        if(c == i){
+                            cont1++;
+                            versiculor.push_back(c);
+                        }
+                    }   
+                cout << endl;
+            }
+        }
+        break;
+    }
+    cont++;
+    cout<<"Interseccções da virginica"<<endl;
+    for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
+    {
+        if(cont == 1){
+            for(auto i:multiInterseccoes2){
+                    for (auto c : mapIt->second){ 
+                        cout << c << " ";
+                        if(c == i){
+                            cont2++;
+                            virginica.push_back(c);
+                        }
+                    }
+                cout << endl;
+            }
+        }
+        break;
+    }
+    cont++;
+    cout<<"setosa"<<endl;
+    for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
+    {
+        if(cont == 2){
+            for(auto i:multiInterseccoes2){
+                    for (auto c : mapIt->second){ 
+                        cout << c << " ";
+                        if(c == i){
+                            cont3++;
+                            setosa.push_back(c);
+                        }
+                    }
+                cout << endl;
+            }
+        }
+        break;
+    }
+
+    cout<<"Resultados: "<<endl;
+    cout<<" versiculor: "<<cont1<<endl;
+    cout<<" virginica: "<<cont2<<endl;
+    cout<<" setosa: "<<cont3<<endl;
+}
+
+void numeroClassesIteracoesEtapa4(){
+    cout<<"ETAPA 4"<<endl<<endl;
+    int soma1=0;
+    int soma2=0; 
+    int soma3=0;
+    cout<<"Versiculor"<<endl;
+    for(auto i:versiculor){
+        cout<<i<<" ";
+        soma1+=i;
+    }
+    cout<<"Soma versiculor: "<<soma1<<endl<<endl;
+    cout<<"Virginica"<<endl;
+    for(auto i:virginica){
+        cout<<i<<" ";
+        soma2+=i;
+    }
+    cout<<"Soma Virginica: "<<soma2<<endl<<endl;
+    cout<<"Setosa"<<endl;
+    for(auto i:setosa){
+        cout<<i<<" ";
+        soma3+=i;
+    }
+    cout<<"Soma setosa: "<<soma3<<endl<<endl;
 }
 
 #endif
