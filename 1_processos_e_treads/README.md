@@ -16,6 +16,32 @@ Já a base T representará os processos a serem executados, cada um produzindo u
 
 <strong>Etapa VI:</strong> Vamos implementar uma memória primária para chavear processos. Nesse modelo, uma tarefa não será concluída por completo porque se seu tempo de CPU acabar você a colocará em um espaço de memória para aguardar nova submissão. Vamos analisar nessa etapa os impactos do chaveamento, da organização de memória e suas diferentes hierarquias.
 
+<h2>Dados gerais de compilação e afins</h2>
+
+Este software foi produzido em ambiente virtual Linux, assim o meio de compilação utilizado foi o makefile que está na pasta "processos", é um makefile editado para uso pessoal, de forma a utilizar a depuração no processo de confecção e treads para compilações futuras. Vale ressaltar que alguns documentos .txt foram criados para fins de teste, e que não teêm nenhuma importância no montante final dos dados. Tendo essas informações em mente é hora de falar da compilação:
+
+~~~
+make clean 
+
+make
+
+make run
+~~~
+
+Caso queira registrar a saída do terminal em um arquivo para que fique mais fácil a vistoria dos resultados use o seguinte comando:
+
+~~~
+make clean && make 2> t.txt
+~~~
+
+Caso o custo esteja alto para máquina de testes, use o seguinte comando para dividir o processamento em vários núcleos através de treads de compilação:
+
+~~~
+make j(número de núcleos disponíveis do seu computador)
+~~~
+
+Para saber a quantidade de núcleos do seu computador basta jogar as informações do seu processador na internet!!!
+
 
 <h2>Resuloções Etapa 1</h2>
 
@@ -23,7 +49,8 @@ Para resolução da etapa 1 usei um "unoder_map" para ser a hash dos itens D, no
 ![image](https://user-images.githubusercontent.com/78708394/197238271-dc03a069-d6c3-4ec0-a2f0-ab71ef59f918.png)
 
 <strong>Menu</strong><p>
-Através do menu é possível acessar cada processo individualmente, foi melhor fazer dessa forma para que fosse obtido o resultado visual das iterações entre processos, assim é necessário que o usuário clique em todas as opções em ordem crescente, para que tenha o resultado de cada processo individualmente e seja carregado para os processos subsequêntes, assim se o usuário pular uma opção os processos não estarão carregados para exucição desta. Isso vale para todas as etapas.
+Através do menu é possível acessar cada processo individualmente, foi melhor fazer dessa forma para que fosse obtido o resultado visual das iterações entre processos, assim é necessário que o usuário clique em todas as opções em ordem crescente, para que tenha o resultado de cada processo individualmente e seja carregado para os processos subsequêntes, assim se o usuário pular uma opção os processos não estarão carregados para exucição desta. Isso vale para todas as etapas.<p>
+
 ![menu etapa 1](https://user-images.githubusercontent.com/78708394/197241245-1623224e-8711-44db-941a-58dbb70e3634.png)
 
 
