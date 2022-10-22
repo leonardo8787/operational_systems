@@ -113,8 +113,6 @@ void etapa3(){
 		cout<<"2 - printa as intersecções"<<endl;
 		cout<<"3 - printa valores da intersecção"<<endl;
 		cout<<"4 - intersecção com as classes das flores"<<endl;
-		cout<<" "<<endl;
-		cout<<"9 - Intersecção das combinações"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
@@ -157,6 +155,7 @@ void etapa4(){
 		cout<<"========================================================"<<endl;
 		cout<<"===MENU==="<<endl;
 		cout<<"1 - Interações com Classe de flores"<<endl;
+		cout<<"2 - passa pela cash"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
@@ -166,6 +165,9 @@ void etapa4(){
 				break;
 			case 1:
 				numeroClassesIteracoes();
+				break;
+			case 2:
+				cashHash();
 				break;
 			default:
 				cout<<"Escolha uma opção válida"<<endl;

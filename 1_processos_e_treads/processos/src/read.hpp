@@ -47,6 +47,9 @@ vector<int> versiculor;
 vector<int> virginica;
 vector<int> setosa;
 
+//cash
+unordered_map<string, vector<int>> cash;
+
 class Ler
 {
 public:
@@ -71,9 +74,8 @@ public:
     void interseccaoClasse();
     void printFilaVector();
     void interseccaoDasCombinacoes();
-    //vector<string> intersection(vector<string> v1, vector<string> v2);
-    //void interseccaoDasCombinacoes();
     void numeroClassesIteracoes();
+    void cashHash();
 };
 
 void ler()
@@ -182,7 +184,7 @@ void lerT()
                 key = string(token);
                 cout << key << endl;
                 classes3[key].push_back(linha);
-                token = strtok(NULL, ",");
+                token = strtok(NULL, ","); 
                 coluna=1;
                 break;
             }
@@ -505,9 +507,7 @@ void interseccao2(string recebe)
     vector<vector<string>> auxilia2;
     vector<string> procura;
     vector<vector<string>> procura2;
-    bool primeiroLoop=true;
     char vetor[25];
-    int cont = 0;
     strcpy(vetor, recebe.c_str());
     char *token = strtok(vetor, "-");
     cout << "[" << recebe << "]" << endl;
@@ -521,10 +521,8 @@ void interseccao2(string recebe)
             vector<int> aux2;
             cout << " Chave encontrada! :" << chave << endl;
             for(auto i:texto.find(chave)->second){
-                for(auto j:i){
-                    int a = stoi(i);
-                    aux2.push_back(a);   
-                }
+                int a = stoi(i);
+                aux2.push_back(a);   
             }
             pegaInterseccao3.push_back(aux2);
         }
@@ -583,13 +581,13 @@ void interseccaoClasse(){
     {
         if(cont == 0){
             for(auto i:multiInterseccoes){
-                for (auto c : mapIt->second){ 
-                    cout << c << " ";
-                    if(c == i){
-                        cont1++;
-                        versiculor.push_back(c);
-                    }
-                }
+                    for (auto c : mapIt->second){ 
+                        cout << c << " ";
+                        if(c == i){
+                            cont1++;
+                            versiculor.push_back(c);
+                        }
+                    }   
                 cout << endl;
             }
         }
@@ -601,13 +599,13 @@ void interseccaoClasse(){
     {
         if(cont == 1){
             for(auto i:multiInterseccoes){
-                for (auto c : mapIt->second){ 
-                    cout << c << " ";
-                    if(c == i){
-                        cont2++;
-                        virginica.push_back(c);
+                    for (auto c : mapIt->second){ 
+                        cout << c << " ";
+                        if(c == i){
+                            cont2++;
+                            virginica.push_back(c);
+                        }
                     }
-                }
                 cout << endl;
             }
         }
@@ -619,13 +617,13 @@ void interseccaoClasse(){
     {
         if(cont == 2){
             for(auto i:multiInterseccoes){
-                for (auto c : mapIt->second){ 
-                    cout << c << " ";
-                    if(c == i){
-                        cont3++;
-                        setosa.push_back(c);
+                    for (auto c : mapIt->second){ 
+                        cout << c << " ";
+                        if(c == i){
+                            cont3++;
+                            setosa.push_back(c);
+                        }
                     }
-                }
                 cout << endl;
             }
         }
@@ -661,6 +659,37 @@ void numeroClassesIteracoes(){
         soma3+=i;
     }
     cout<<"Soma setosa: "<<soma3<<endl<<endl;
+}
+
+void cashHash(){
+    cout<<"======Cash-Hash======"<<endl;
+    queue<vector<string>> help = combinacoes;
+    vector<string> help2;
+    vector<int> auxInterseccoes;
+
+    while (!help.empty())
+    {
+        help2 = help.front();
+        help.pop();
+        for (auto &i : help2){ 
+            char vetor[25];
+            strcpy(vetor, i.c_str());
+            char *token = strtok(vetor, "-");
+            cout<<i<<endl;
+            string chave = (string) token;
+            cout<<chave<<endl;
+            if (texto.find(chave) != texto.end()) {
+                vector<int> auxT;
+                for(auto j:texto.find(chave)->second){
+                    auxT.push_back(stoi(j));   
+                }
+                string key = string(i);
+                //cash[key].push_back(auxT);
+            }            
+        }
+        cout << endl;
+        help2.clear();
+    }
 }
 
 #endif
