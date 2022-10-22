@@ -156,6 +156,7 @@ void etapa4(){
 		cout<<"===MENU==="<<endl;
 		cout<<"1 - Interações com Classe de flores"<<endl;
 		cout<<"2 - passa pela cash"<<endl;
+		cout<<"3 - printa Cash"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
@@ -168,6 +169,9 @@ void etapa4(){
 				break;
 			case 2:
 				cashHash();
+				break;
+			case 3:
+				printaCash();
 				break;
 			default:
 				cout<<"Escolha uma opção válida"<<endl;

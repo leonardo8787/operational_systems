@@ -76,6 +76,7 @@ public:
     void interseccaoDasCombinacoes();
     void numeroClassesIteracoes();
     void cashHash();
+    void printaCash();
 };
 
 void ler()
@@ -684,11 +685,23 @@ void cashHash(){
                     auxT.push_back(stoi(j));   
                 }
                 string key = string(i);
-                //cash[key].push_back(auxT);
+                cash[key] = auxT;
             }            
         }
         cout << endl;
         help2.clear();
+    }
+}
+
+void printaCash(){
+    cout<<"Valores da Cash"<<endl;
+    for (auto mapIt = begin(cash); mapIt != end(cash); ++mapIt)
+    {
+        cout << mapIt->first
+             << " : ";
+        for (auto c : mapIt->second)
+            cout << c << " ";
+        cout << endl;
     }
 }
 
