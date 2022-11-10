@@ -88,7 +88,7 @@ Por fim foi adicionado threads nas combinações, para que fosse agilizado o pro
 
 (Gráfico de tempo Threas)
 
-
+O trabalho foi muito bom para consolidar o aprendizado sobre os sistemas operacionais, foi feita a implementação da ideia de um sistema utilizando a linguagem C++ para tal. Foi visto desde tokenizadores e comparações de informações até processos, escalonadores e trheads, não consigo imaginar uma tarefa que proporciona-se tanto conhecimento consolidado como esta. 
 
 <h1>Referências</h1>
 
