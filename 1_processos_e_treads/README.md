@@ -76,6 +76,19 @@ Através do menu é possível acessar cada processo individualmente, foi melhor 
 <strong>Menu</strong><p>
 ![menu etapa 4](https://user-images.githubusercontent.com/78708394/197241358-54ce980a-da46-4f06-808a-0beaf65d6048.png)
 
+<h2>Resolução Etapa 5 e 6</h2>
+
+Nesta epata foi mudada a política de escalonamento do software, para que as coisas ficassem mais interessantes. Neste ponto de desenvolvimento escolhi fazer a 'first job' para que pudesse passar uma linha de processamento por vez para a cache, assim o sistema sairia de FIFO, atual escalonador. Neste ponto do código é pego o tempo de execução das combinações para ver se a mudança de escalonador resoltou numa melhora ou piora de tempo de processamento. 
+
+(gráfico de tempo FIFO)
+
+(gráfico de tempo First Job)
+
+Por fim foi adicionado threads nas combinações, para que fosse agilizado o processamento destas. 
+
+(Gráfico de tempo Threas)
+
+
 
 <h1>Referências</h1>
 
