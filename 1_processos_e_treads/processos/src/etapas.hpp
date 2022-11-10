@@ -9,6 +9,7 @@ class Etapas{
 	private:
 
     public:
+		void geral();
 		void etapa1();
 		void etapa2();
 		void etapa3();
@@ -16,6 +17,30 @@ class Etapas{
 		void etapa5();
 		void etapa6();
 };
+
+void geral(){
+	ler();
+	Hash();
+	HashNomes1();
+	mostraClasseDeFlores();
+	classesFlorMetodo();
+	lerT();
+	printFilaDeVector();
+	iniciaCombinacao();
+	printCombinacoes();
+	interseccoes1();
+	interseccaoDasCombinacoes();
+	printaPegaInterseccao2();
+	interseccaoClasse();
+	interseccaoDasCombinacoes();
+	numeroClassesIteracoes();
+	cashHash();
+	printaCash();
+	interseccaoEtapa4();
+	interseccaoDasCombinacoesEtapa4();
+	interseccaoClasseEtapa4();
+	numeroClassesIteracoesEtapa4();
+}
 
 void etapa1(){
 	int op;
@@ -198,14 +223,15 @@ void etapa5(){
 		cout<<"Centro Federal de Educação Tecnológica de Minas Gerais"<<endl;
 		cout<<"========================================================"<<endl;
 		cout<<"===MENU==="<<endl;
-		cout<<"1 - "<<endl;
-		cout<<"2 - "<<endl;
+		cout<<"1 - POLÍTICA(First Job)"<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
 		{
 			case 0:
 				system("clear || cls"); 
+				break;
+			case 1:
 				break;
 			default:
 				cout<<"Escolha uma opção válida"<<endl;
