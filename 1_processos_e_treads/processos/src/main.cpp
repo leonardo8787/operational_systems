@@ -17,10 +17,11 @@ int main(){
 		menu();
 		break;
 	case 2:
+		auto start = std::chrono::steady_clock::now();
 		geral();
-		break;
-	default:
-		cout<<"Digite uma opção válida!!!"<<endl;
+		auto end = std::chrono::steady_clock::now();
+		std::chrono::duration<double> elapsed_seconds = end-start;
+		std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 		break;
 	}
 	return 0;

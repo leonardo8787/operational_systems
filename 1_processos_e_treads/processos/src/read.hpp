@@ -86,7 +86,7 @@ public:
 
 void ler()
 {
-
+    auto start = std::chrono::steady_clock::now();
     ifstream file1;
     file1.open("src/dataset/D.csv");
 
@@ -147,11 +147,14 @@ void ler()
     getchar();
     getchar();
     file1.close();
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void lerT()
 {
-
+    auto start = std::chrono::steady_clock::now();
     ifstream file1;
     file1.open("src/dataset/T.csv");
 
@@ -212,10 +215,14 @@ void lerT()
     getchar();
     getchar();
     file1.close();
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void printFilaDeVector()
 {
+    auto start = std::chrono::steady_clock::now();
     queue<vector<string>> help = antesCombinacao2;
     vector<string> help2;
     while (!help.empty())
@@ -231,10 +238,14 @@ void printFilaDeVector()
         help2.clear();
     }
     cout << endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void classesFlorMetodo()
 {
+    auto start = std::chrono::steady_clock::now();
     int cont = 0;
     for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
     {
@@ -255,11 +266,14 @@ void classesFlorMetodo()
         cont++;
     }
     cout<<endl<<" 0 - versicolor \n 1 - virginica \n 2 - setosa "<<endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void poeNaFilaALinha()
 {
-
+    auto start = std::chrono::steady_clock::now();
     ifstream file;
     file.open("src/dataset/T.csv");
 
@@ -291,10 +305,14 @@ void poeNaFilaALinha()
     getchar();
 
     file.close();
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void Hash()
 {
+    auto start = std::chrono::steady_clock::now();
     for (auto mapIt = begin(texto); mapIt != end(texto); ++mapIt)
     {
         cout << mapIt->first
@@ -303,10 +321,14 @@ void Hash()
             cout << c << " ";
         cout << endl;
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void Hash2()
 {
+    auto start = std::chrono::steady_clock::now();
     for (auto mapIt = begin(texto2); mapIt != end(texto2); ++mapIt)
     {
         cout << mapIt->first
@@ -315,10 +337,14 @@ void Hash2()
             cout << c << " ";
         cout << endl;
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void HashNomes1()
 {
+    auto start = std::chrono::steady_clock::now();
     ifstream file1;
     file1.open("src/dataset/D.csv");
 
@@ -350,18 +376,26 @@ void HashNomes1()
     getchar();
 
     file1.close();
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void mostraClasseDeFlores()
 {
+    auto start = std::chrono::steady_clock::now();
     for (auto &str : classes)
     {
         cout << str << endl;
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void HashNomes2()
 {
+    auto start = std::chrono::steady_clock::now();
     ifstream file2;
     file2.open("src/dataset/T.csv");
     int cont = 0;
@@ -383,10 +417,14 @@ void HashNomes2()
     getchar();
 
     file2.close();
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void Token()
 {
+    auto start = std::chrono::steady_clock::now();
     ifstream file1;
     file1.open("src/dataset/D.csv");
 
@@ -413,12 +451,16 @@ void Token()
     getchar();
 
     file1.close();
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void combinate(vector<string> vector, int perm[], int index, int n, int k);
 
 void iniciaCombinacao()
 {
+    auto start = std::chrono::steady_clock::now();
     queue<vector<string>> help = antesCombinacao2;
     vector<string> ini;
     int perm[3] = {0};
@@ -433,10 +475,14 @@ void iniciaCombinacao()
         combinacoes.push(allCombinatesLine);
         allCombinatesLine.clear();
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void combinate(vector<string> vector, int perm[], int index, int n, int k)
 {
+    auto start = std::chrono::steady_clock::now();
     static int count = 0;
     if (count == k)
     {
@@ -462,10 +508,14 @@ void combinate(vector<string> vector, int perm[], int index, int n, int k)
         count--;
         combinate(vector, perm, index + 1, n, k);
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void printCombinacoes()
 {
+    auto start = std::chrono::steady_clock::now();
     queue<vector<string>> help = combinacoes;
     vector<string> help2;
     while (!help.empty())
@@ -481,12 +531,16 @@ void printCombinacoes()
         help2.clear();
     }
     cout << endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void interseccao2(string recebe);
 
 void interseccoes1()
 {
+    auto start = std::chrono::steady_clock::now();
     cout << "=======interações e intersecções=======" << endl;
     queue<vector<string>> help = combinacoes;
     vector<string> help2;
@@ -500,6 +554,9 @@ void interseccoes1()
         help2.clear();
     }
     cout << endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 vector<int> interseccao3(vector<int> v1, vector<int> v2);
@@ -509,6 +566,7 @@ vector<int> intersection(vector<int> v1, vector<int> v2);
 
 void interseccao2(string recebe)
 {
+    auto start = std::chrono::steady_clock::now();
     vector<string> auxilia;
     vector<vector<string>> auxilia2;
     vector<string> procura;
@@ -533,9 +591,13 @@ void interseccao2(string recebe)
             pegaInterseccao3.push_back(aux2);
         }
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void interseccaoDasCombinacoes(){
+    auto start = std::chrono::steady_clock::now();
     for(auto i:pegaInterseccao3){ 
         for(auto j:i){
             cout<<j<<" ";
@@ -548,24 +610,36 @@ void interseccaoDasCombinacoes(){
         cout<<i<<" ";
     }
     cout<<endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void printaVectorProcura(){
+    auto start = std::chrono::steady_clock::now();
     for(auto i:pegaInterseccao){
         cout<<i<<endl;
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void printaPegaInterseccao2(){
+    auto start = std::chrono::steady_clock::now();
     for(auto i:pegaInterseccao3){
         for(auto j:i){
             cout<<j<<" ";
         }
         cout<<endl;
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void printFilaVector(){
+    auto start = std::chrono::steady_clock::now();
     queue<vector<string>> help = pegaInterseccao2;
     vector<string> help2;
     while (!help.empty())
@@ -578,9 +652,13 @@ void printFilaVector(){
         help2.clear();
     }
     cout << endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void interseccaoClasse(){
+    auto start = std::chrono::steady_clock::now();
     cout<<"Interseccções da versiculor"<<endl;
     int cont =0;
     for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
@@ -640,9 +718,13 @@ void interseccaoClasse(){
     cout<<" versiculor: "<<cont1<<endl;
     cout<<" virginica: "<<cont2<<endl;
     cout<<" setosa: "<<cont3<<endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void numeroClassesIteracoes(){
+    auto start = std::chrono::steady_clock::now();
     cout<<"ETAPA 4"<<endl<<endl;
     int soma1=0;
     int soma2=0; 
@@ -665,9 +747,13 @@ void numeroClassesIteracoes(){
         soma3+=i;
     }
     cout<<"Soma setosa: "<<soma3<<endl<<endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void cashHash(){
+    auto start = std::chrono::steady_clock::now();
     cout<<"======Cash-Hash======"<<endl;
     queue<vector<string>> help = combinacoes;
     vector<string> help2;
@@ -696,9 +782,13 @@ void cashHash(){
         cout << endl;
         help2.clear();
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void printaCash(){
+    auto start = std::chrono::steady_clock::now();
     cout<<"Valores da Cash"<<endl;
     for (auto mapIt = begin(cash); mapIt != end(cash); ++mapIt)
     {
@@ -708,11 +798,15 @@ void printaCash(){
             cout << c << " ";
         cout << endl;
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void interseccao2Etapa4(string recebe);
 
 void interseccaoEtapa4(){
+    auto start = std::chrono::steady_clock::now();
     queue<vector<string>> help = combinacoes;
     vector<string> help2;
     while (!help.empty())
@@ -725,6 +819,9 @@ void interseccaoEtapa4(){
         help2.clear();
     }
     cout << endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 vector<vector<int>> pegaInterseccaoEtapa4;
@@ -732,6 +829,7 @@ set<int> multiInterseccoes2;
 
 void interseccao2Etapa4(string recebe)
 {
+    auto start = std::chrono::steady_clock::now();
     vector<string> auxilia;
     vector<vector<string>> auxilia2;
     vector<string> procura;
@@ -765,18 +863,26 @@ void interseccao2Etapa4(string recebe)
             }
         }
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void interseccaoDasCombinacoesEtapa4(){
+    auto start = std::chrono::steady_clock::now();
     for(auto i:pegaInterseccaoEtapa4){ 
         for(auto j:i){
             cout<<j<<" ";
             multiInterseccoes.insert(j);
         }
     }
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void interseccaoClasseEtapa4(){
+    auto start = std::chrono::steady_clock::now();
     cout<<"Interseccções da versiculor"<<endl;
     int cont =0;
     for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
@@ -836,9 +942,13 @@ void interseccaoClasseEtapa4(){
     cout<<" versiculor: "<<cont1<<endl;
     cout<<" virginica: "<<cont2<<endl;
     cout<<" setosa: "<<cont3<<endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 void numeroClassesIteracoesEtapa4(){
+    auto start = std::chrono::steady_clock::now();
     cout<<"ETAPA 4"<<endl<<endl;
     int soma1=0;
     int soma2=0; 
@@ -861,6 +971,9 @@ void numeroClassesIteracoesEtapa4(){
         soma3+=i;
     }
     cout<<"Soma setosa: "<<soma3<<endl<<endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
 #endif
