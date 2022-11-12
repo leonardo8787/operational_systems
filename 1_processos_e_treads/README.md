@@ -76,11 +76,38 @@ Através do menu é possível acessar cada processo individualmente, foi melhor 
 <strong>Menu</strong><p>
 ![menu etapa 4](https://user-images.githubusercontent.com/78708394/197241358-54ce980a-da46-4f06-808a-0beaf65d6048.png)
 
+<h2>Método usado para calcular tempo de execução de algoritmo</h2>
+
+Para calcular o tempo de execução do algoritmo que estamos trabalhando usei a biblioteca <chrono> do C++ 11, está biblioteca é capaz de medir tempo de execução com alta precisão, utilizando o próprio clock da máquina para fazer o cálculo de tempo. Neste link o u´suario pode encontrar mais informações direto da documentação oficial do C++: [https://en.cppreference.com/w/cpp/chrono#std::chrono_library]
+
+<strong>Utilização</strong>
+
+~~~
+int main()
+{
+    auto start = std::chrono::steady_clock::now();
+    
+    //Funções a serem executadas
+    
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo de execução:: " << elapsed_seconds.count() << endl;
+}
+~~~
+
+Com este dado de execução é possível ter um ponto de vista sobre a execução mas não é apenas rodar o medidor de tempo para encontrar o tempo de execução, é necessário rodar o software por 10x e assim tirar a média dos tempos para poder chegar a um tempo convergente.
+
+Se você estiver usando o sistema Linux como SO, também pode optar por uma forma mais simples de calcular. Sugiro que use o time ./a.out no terminal, onde a.out é o executável do seu programa. Esse comando imprime 3 linhas, sendo elas:
+
+ - real: Tempo real do começo ao fim da execução;
+ - sys: Tempo gasto pelo kernel do sistema no processo de execução do seu programa;
+ - user: Tempo usado no user-mode. É o tempo que seu computador gasta no processo fora do kernel;
+
 <h2>Resolução Etapa 5 e 6</h2>
 
 Nesta epata foi mudada a política de escalonamento do software, para que as coisas ficassem mais interessantes. Neste ponto de desenvolvimento escolhi fazer a 'first job' para que pudesse passar uma linha de processamento por vez para a cache, assim o sistema sairia de FIFO, atual escalonador. Neste ponto do código é pego o tempo de execução das combinações para ver se a mudança de escalonador resoltou numa melhora ou piora de tempo de processamento. 
 
-(gráfico de tempo FIFO)
+O tempo de execução em FIFO foi de: 1.07823 segundos.
 
 (gráfico de tempo First Job)
 
