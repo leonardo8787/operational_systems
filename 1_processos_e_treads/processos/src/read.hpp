@@ -4,6 +4,13 @@
 #include "includes.hpp"
 #define TAM 100
 
+#define NUMCONS 2
+#define NUMPROD 2
+#define BUFFERSIZE 8 //1000
+
+#define TRUE 1
+#define FALSE 0
+
 int cont1 = 0; // flor -> versiculor
 int cont2 = 0; // flor -> virginica
 int cont3 = 0; // flor -> setosa
@@ -42,6 +49,11 @@ queue<vector<string>> pegaInterseccao2; // intersecção dos valores associados 
 vector<vector<int>> pegaInterseccao3;
 set<int> multiInterseccoes;
 
+//classes de flores feitas para auxiliar
+vector<int> versiculor0;
+vector<int> virginica0;
+vector<int> setosa0;
+
 //classes de flores
 vector<int> versiculor;
 vector<int> virginica;
@@ -49,6 +61,14 @@ vector<int> setosa;
 
 //cash
 unordered_map<string, vector<int>> cash;
+
+typedef struct {
+    int buffer[BUFFERSIZE];
+    int currentidx;
+    pthread_mutex_t buffer_mutex;
+    sem_t buffer_full;
+    sem_t buffer_empty;
+}estrutura_global;
 
 class Ler
 {
@@ -82,6 +102,9 @@ public:
     void interseccaoDasCombinacoesEtapa4();
     void interseccaoClasseEtapa4();
     void umeroClassesIteracoesEtapa4();
+    void produtorEconsumidor();
+    void *consumidor(void *arg);
+    void *produtor(void *arg);
 };
 
 void ler()
@@ -250,22 +273,25 @@ void classesFlorMetodo()
     for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
     {
         if(cont == 0){
-            cout << cont << " : ";
+            cout << cont<<"-versiculor" << " : ";
             cont1++; 
         }else if(cont == 1){
-            cout << cont << " : ";
+            cout << cont<<"-virginica" << " : ";
             cont2++; 
         }else if(cont == 2){
-            cout << cont << " : ";
+            cout << cont <<"-setosa"<< " : ";
             cont3++;
         }
-        for (auto c : mapIt->second)
+        for (auto c : mapIt->second){ 
             cout << c << " ";
+            if(cont == 0) {versiculor0.push_back(c);}
+            else if(cont == 1) {virginica0.push_back(c);}
+            else if(cont == 2) {setosa0.push_back(c);}
+        }
         cout << endl;
 
         cont++;
     }
-    cout<<endl<<" 0 - versicolor \n 1 - virginica \n 2 - setosa "<<endl;
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
@@ -473,6 +499,7 @@ void iniciaCombinacao()
             combinate(ini, perm, 0, 3, index);
         ini.clear();
         combinacoes.push(allCombinatesLine);
+
         allCombinatesLine.clear();
     }
     auto end = std::chrono::steady_clock::now();
@@ -526,6 +553,7 @@ void printCombinacoes()
         {
             cout << "[" << i << "]"
                  << " ";
+            
         }
         cout << endl;
         help2.clear();
@@ -661,11 +689,11 @@ void interseccaoClasse(){
     auto start = std::chrono::steady_clock::now();
     cout<<"Interseccções da versiculor"<<endl;
     int cont =0;
-    for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
+    for (int i=0; i<3; i++/*auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt*/)
     {
         if(cont == 0){
             for(auto i:multiInterseccoes){
-                    for (auto c : mapIt->second){ 
+                    for (auto c : versiculor0/*mapIt->second*/){ 
                         cout << c << " ";
                         if(c == i){
                             cont1++;
@@ -675,15 +703,15 @@ void interseccaoClasse(){
                 cout << endl;
             }
         }
-        break;
-    }
+        // break;
+    // }
     cont++;
     cout<<"Interseccções da virginica"<<endl;
-    for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
-    {
+    // for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
+    // {
         if(cont == 1){
             for(auto i:multiInterseccoes){
-                    for (auto c : mapIt->second){ 
+                    for (auto c : virginica0){ 
                         cout << c << " ";
                         if(c == i){
                             cont2++;
@@ -693,15 +721,15 @@ void interseccaoClasse(){
                 cout << endl;
             }
         }
-        break;
-    }
+        // break;
+    // }
     cont++;
     cout<<"setosa"<<endl;
-    for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
-    {
+    // for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
+    // {
         if(cont == 2){
             for(auto i:multiInterseccoes){
-                    for (auto c : mapIt->second){ 
+                    for (auto c : setosa0){ 
                         cout << c << " ";
                         if(c == i){
                             cont3++;
@@ -711,13 +739,32 @@ void interseccaoClasse(){
                 cout << endl;
             }
         }
-        break;
+        // break;
     }
 
     cout<<"Resultados: "<<endl;
     cout<<" versiculor: "<<cont1<<endl;
     cout<<" virginica: "<<cont2<<endl;
     cout<<" setosa: "<<cont3<<endl;
+
+    if(cont1 > cont2 ){
+        if(cont3 > cont1){
+            cout<<"setosa é a vencedora!"<<endl;
+            cout<<cont3<<endl;
+        }else{
+            cout<<"Versiculor é a vencedora!"<<endl;
+            cout<<cont1<<endl;
+        }
+    }else{
+        if(cont3 > cont2){ 
+            cout<<"setosa é a vencedora!"<<endl;
+            cout<<cont3<<endl;
+        }else{ 
+            cout<<"Virginica é a vencedora!"<<endl;
+            cout<<cont2<<endl;
+        }
+    }
+
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
@@ -974,6 +1021,72 @@ void numeroClassesIteracoesEtapa4(){
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
+}
+
+void *consumidor(void *arg);
+void *produtor(void *arg);
+
+void produtorEconsumidor(){
+	pthread_t cons[NUMCONS];
+	pthread_t prod[NUMPROD];
+	estrutura_global vglobal;
+
+	vglobal.currentidx = 0;
+	for(int i=0; i<BUFFERSIZE; i++)
+		vglobal.buffer[i] = -1;
+	
+	pthread_mutex_init(&vglobal.buffer_mutex, NULL);
+	sem_init(&vglobal.buffer_full, 0, BUFFERSIZE);
+	sem_init(&vglobal.buffer_empty, 0, 0);
+
+	srand(time(NULL));
+	
+	for(int i=0; i<NUMPROD; i++)
+		pthread_create(&(prod[i]), NULL, produtor, &vglobal);
+
+	for(int i=0; i<NUMCONS; i++)
+		pthread_create(&(cons[i]), NULL, consumidor, &vglobal);
+	
+	for(int i=0; i<NUMCONS; i++)
+		pthread_join(cons[i], NULL);
+
+	for(int i=0; i<NUMPROD; i++)
+		pthread_join(prod[i], NULL);
+}
+
+void *produtor(void *arg){
+	int n;
+	estrutura_global *vglobal = (estrutura_global*) arg;
+
+	while(TRUE){
+		n = (int) (rand() % 1000);
+
+		sem_wait(&vglobal->buffer_full);
+		pthread_mutex_lock(&vglobal->buffer_mutex);
+		vglobal->buffer[vglobal->currentidx++] = n;
+		pthread_mutex_unlock(&vglobal->buffer_mutex);
+		sem_post(&vglobal->buffer_empty);
+
+		printf("Produzindo: %d\n", n);
+		sleep((int) (rand() % 4));
+	}
+}
+
+void *consumidor(void *arg){
+	int n;
+	estrutura_global *vglobal =  (estrutura_global*) arg;
+
+	while(TRUE){
+
+		sem_wait(&vglobal->buffer_empty);
+		pthread_mutex_lock(&vglobal->buffer_mutex);
+		n = vglobal->buffer[--vglobal->currentidx];
+		pthread_mutex_unlock(&vglobal->buffer_mutex);
+		sem_post(&vglobal->buffer_full);
+
+		printf("Consumindo: %d\n", n);
+		sleep((int) (rand() % 4));
+	}
 }
 
 #endif
