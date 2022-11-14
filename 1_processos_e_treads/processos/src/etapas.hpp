@@ -40,6 +40,7 @@ void geral(){
 	interseccaoDasCombinacoesEtapa4();
 	interseccaoClasseEtapa4();
 	numeroClassesIteracoesEtapa4();
+	produtorEconsumidor();
 }
 
 void etapa1(){
@@ -248,14 +249,17 @@ void etapa6(){
 		cout<<"Centro Federal de Educação Tecnológica de Minas Gerais"<<endl;
 		cout<<"========================================================"<<endl;
 		cout<<"===MENU==="<<endl;
-		cout<<"1 - "<<endl;
-		cout<<"2 - "<<endl;
+		cout<<"1 - Produtor e Consumidor com thread"<<endl;
+		// cout<<"2 - "<<endl;
 		cout<<"111 - voltar"<<endl;
 		cin>>op;
 		switch (op)
 		{
 			case 0:
 				system("clear || cls"); 
+				break;
+			case 1:
+				produtorEconsumidor();
 				break;
 			default:
 				cout<<"Escolha uma opção válida"<<endl;

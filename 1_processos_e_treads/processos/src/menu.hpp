@@ -51,6 +51,12 @@ void menu(){
 			case 4:
 				etapa4();
 				break;
+			case 5:
+				etapa5();
+				break;
+			case 6:
+				etapa6();
+				break;
 			case 111:
 				cout<<"saindo..."<<endl;
 				break;

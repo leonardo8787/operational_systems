@@ -6,7 +6,7 @@
 
 #define NUMCONS 2
 #define NUMPROD 2
-#define BUFFERSIZE 8 //1000
+#define BUFFERSIZE 100 //8 //1000
 
 #define TRUE 1
 #define FALSE 0
@@ -62,8 +62,11 @@ vector<int> setosa;
 //cash
 unordered_map<string, vector<int>> cash;
 
+pthread_t cons[NUMCONS];
+pthread_t prod[NUMPROD];
+
 typedef struct {
-    int buffer[BUFFERSIZE];
+    vector<string> buffer[BUFFERSIZE];
     int currentidx;
     pthread_mutex_t buffer_mutex;
     sem_t buffer_full;
@@ -103,8 +106,8 @@ public:
     void interseccaoClasseEtapa4();
     void umeroClassesIteracoesEtapa4();
     void produtorEconsumidor();
-    void *consumidor(void *arg);
     void *produtor(void *arg);
+    void *consumidor(void *arg);
 };
 
 void ler()
@@ -540,6 +543,9 @@ void combinate(vector<string> vector, int perm[], int index, int n, int k)
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
+void *produtor(void *arg);
+void *consumidor(void *arg);
+
 void printCombinacoes()
 {
     auto start = std::chrono::steady_clock::now();
@@ -553,7 +559,7 @@ void printCombinacoes()
         {
             cout << "[" << i << "]"
                  << " ";
-            
+            // produtor(i);
         }
         cout << endl;
         help2.clear();
@@ -1023,17 +1029,17 @@ void numeroClassesIteracoesEtapa4(){
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
-void *consumidor(void *arg);
 void *produtor(void *arg);
+void *consumidor(void *arg);
 
 void produtorEconsumidor(){
-	pthread_t cons[NUMCONS];
-	pthread_t prod[NUMPROD];
+
 	estrutura_global vglobal;
+    vector<string> aux[BUFFERSIZE];
 
 	vglobal.currentidx = 0;
 	for(int i=0; i<BUFFERSIZE; i++)
-		vglobal.buffer[i] = -1;
+		vglobal.buffer[i].push_back("-1");
 	
 	pthread_mutex_init(&vglobal.buffer_mutex, NULL);
 	sem_init(&vglobal.buffer_full, 0, BUFFERSIZE);
@@ -1055,36 +1061,42 @@ void produtorEconsumidor(){
 }
 
 void *produtor(void *arg){
-	int n;
 	estrutura_global *vglobal = (estrutura_global*) arg;
-
-	while(TRUE){
-		n = (int) (rand() % 1000);
-
-		sem_wait(&vglobal->buffer_full);
-		pthread_mutex_lock(&vglobal->buffer_mutex);
-		vglobal->buffer[vglobal->currentidx++] = n;
-		pthread_mutex_unlock(&vglobal->buffer_mutex);
-		sem_post(&vglobal->buffer_empty);
-
-		printf("Produzindo: %d\n", n);
-		sleep((int) (rand() % 4));
-	}
+    queue<vector<string>> help = combinacoes;
+    vector<string> help2;
+    while(TRUE){
+        while (!help.empty())
+        {
+            help2 = help.front();
+            help.pop();
+            for (auto &i : help2)
+            {
+                sem_wait(&vglobal->buffer_full);
+                pthread_mutex_lock(&vglobal->buffer_mutex);
+                vglobal->buffer[vglobal->currentidx++].push_back(i);
+                pthread_mutex_unlock(&vglobal->buffer_mutex);
+                sem_post(&vglobal->buffer_empty);
+                cout<<"Produzindo: "<<i<<" ";
+                sleep((int) (rand() % 4));
+            }
+            cout << endl;
+            help2.clear();
+        }
+    }
 }
 
 void *consumidor(void *arg){
-	int n;
+	vector<vector<string>> n;
 	estrutura_global *vglobal =  (estrutura_global*) arg;
-
 	while(TRUE){
-
 		sem_wait(&vglobal->buffer_empty);
 		pthread_mutex_lock(&vglobal->buffer_mutex);
-		n = vglobal->buffer[--vglobal->currentidx];
+		n.push_back(vglobal->buffer[--vglobal->currentidx]);
 		pthread_mutex_unlock(&vglobal->buffer_mutex);
 		sem_post(&vglobal->buffer_full);
-
-		printf("Consumindo: %d\n", n);
+        for(auto i:n)
+            for(auto b:i)
+		        cout<<"Consumindo: "<<b<<endl;
 		sleep((int) (rand() % 4));
 	}
 }
