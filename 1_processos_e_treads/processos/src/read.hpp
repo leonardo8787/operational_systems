@@ -63,6 +63,9 @@ vector<int> setosa;
 //cash
 unordered_map<string, vector<int>> cash;
 
+//memoria
+vector<vector<int>> memoriaM;
+
 pthread_t cons[NUMCONS];
 pthread_t prod[NUMPROD];
 
@@ -110,6 +113,7 @@ public:
     void umeroClassesIteracoesEtapa4();
     void produtorEconsumidor();
     void *produtor(void *arg);
+    void memoria();
 };
 
 void ler()
@@ -687,6 +691,8 @@ void intersectionHash(vector<int> v);
 void printaVectorProcura(vector<string> v);
 vector<int> intersection(vector<int> v1, vector<int> v2);
 
+void memoria();
+
 void interseccao2(string recebe)
 {
     auto start = std::chrono::steady_clock::now();
@@ -698,8 +704,10 @@ void interseccao2(string recebe)
     strcpy(vetor, recebe.c_str());
     char *token = strtok(vetor, "-");
     cout << "[" << recebe << "]" << endl;
+    clock_t t;
     while (token != NULL)
     {
+        t=clock();
         string chave = (string) token;
         procura.push_back(chave);
         token = strtok(NULL, "-");
@@ -712,11 +720,19 @@ void interseccao2(string recebe)
                 aux2.push_back(a);   
             }
             pegaInterseccao3.push_back(aux2);
+            t=clock() - t;
+            if(  ((double)t)/((CLOCKS_PER_SEC/1000)) > 1.0000){
+                memoria();
+            }
         }
     }
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
+}
+
+void interseccao2ComMemoria(string recebe){
+
 }
 
 void interseccaoDasCombinacoes(){
@@ -1105,6 +1121,26 @@ void numeroClassesIteracoesEtapa4(){
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
+}
+
+void memoria(){
+    for(auto i:pegaInterseccao3){ 
+        // for(auto j:i){
+        //     cout<<j<<" ";
+            memoriaM.push_back(i);
+        // }
+    }
+    for(auto i:memoriaM){ 
+        for(auto j:i){
+            cout<<j<<" ";
+            multiInterseccoes.insert(j);
+        }
+    }
+    cout<<endl<<endl;
+    cout<<"Intersecções: "<<endl;
+    for(auto i:multiInterseccoes){
+        cout<<i<<" ";
+    }
 }
 
 #endif
