@@ -9,7 +9,8 @@ class Etapas{
 	private:
 
     public:
-		void geral();
+		void geralFIFO();
+		void geralFistJob();
 		void etapa1();
 		void etapa2();
 		void etapa3();
@@ -18,7 +19,7 @@ class Etapas{
 		void etapa6();
 };
 
-void geral(){
+void geralFIFO(){
 	ler();
 	Hash();
 	HashNomes1();
@@ -27,7 +28,8 @@ void geral(){
 	lerT();
 	printFilaDeVector();
 	iniciaCombinacao();
-	printCombinacoes();
+	// printCombinacoes();
+	produtorEconsumidor();
 	interseccoes1();
 	interseccaoDasCombinacoes();
 	printaPegaInterseccao2();
@@ -40,7 +42,32 @@ void geral(){
 	interseccaoDasCombinacoesEtapa4();
 	interseccaoClasseEtapa4();
 	numeroClassesIteracoesEtapa4();
-	produtorEconsumidor();
+	// produtorEconsumidor();
+}
+
+void geralFirstJob(){
+	// ler();
+	// Hash();
+	// HashNomes1();
+	// mostraClasseDeFlores();
+	// classesFlorMetodo();
+	// lerT();
+	// printFilaDeVector();
+	// iniciaCombinacao();
+	// printCombinacoes();
+	// interseccoes1();
+	// interseccaoDasCombinacoes();
+	// printaPegaInterseccao2();
+	// interseccaoClasse();
+	// interseccaoDasCombinacoes();
+	// numeroClassesIteracoes();
+	// cashHash();
+	// printaCash();
+	// interseccaoEtapa4();
+	// interseccaoDasCombinacoesEtapa4();
+	// interseccaoClasseEtapa4();
+	// numeroClassesIteracoesEtapa4();
+	// produtorEconsumidor();
 }
 
 void etapa1(){
@@ -115,7 +142,8 @@ void etapa2(){
 				break;
 			case 3:
 				iniciaCombinacao();
-				printCombinacoes();
+				produtorEconsumidor();
+				// printCombinacoes();
 				break;
 			case 111:
 				cout<<"saindo..."<<endl;
@@ -259,10 +287,11 @@ void etapa6(){
 				system("clear || cls"); 
 				break;
 			case 1:
+				auto start = std::chrono::steady_clock::now();
 				produtorEconsumidor();
-				break;
-			default:
-				cout<<"Escolha uma opção válida"<<endl;
+				auto end = std::chrono::steady_clock::now();
+				std::chrono::duration<double> elapsed_seconds = end-start;
+				std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 				break;
 		}
 	}while(op != 111);

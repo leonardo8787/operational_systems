@@ -6,14 +6,11 @@
 
 #define NUMCONS 2
 #define NUMPROD 2
-#define BUFFERSIZE 100 //8 //1000
+#define BUFFERSIZE 1000
 
 #define TRUE 1
 #define FALSE 0
 
-int cont1 = 0; // flor -> versiculor
-int cont2 = 0; // flor -> virginica
-int cont3 = 0; // flor -> setosa
 vector<string> a;
 vector<string> recebe;
 vector<string> tokens;
@@ -48,6 +45,10 @@ vector<string> pegaInterseccao; // intersecção2
 queue<vector<string>> pegaInterseccao2; // intersecção dos valores associados as chaves
 vector<vector<int>> pegaInterseccao3;
 set<int> multiInterseccoes;
+
+int cont1 = 0; // flor -> versiculor
+int cont2 = 0; // flor -> virginica
+int cont3 = 0; // flor -> setosa
 
 //classes de flores feitas para auxiliar
 vector<int> versiculor0;
@@ -107,7 +108,6 @@ public:
     void umeroClassesIteracoesEtapa4();
     void produtorEconsumidor();
     void *produtor(void *arg);
-    void *consumidor(void *arg);
 };
 
 void ler()
@@ -123,66 +123,53 @@ void ler()
     int coluna = 1;
     int linha = 1;
     string linhaStr;
+    string stringLineOutput;
+    string charLineOutput;
 
     vector<string> aux;
 
     if (!file1)
     {
-        cout << "o arquivo 1 não pode ser aberto, o programa será fechado!" << endl;
+        printf("O arquivo não pode ser aberto \n");
         return;
     }
 
-    int cont = 0;
     while (file1)
     {
-        if (coluna == 5)
-            coluna = 1;
-        getline(file1, palavra);
-        cout << "\n";
-        cont++;
-        cout << cont << "° - linha" << endl;
-        cout << palavra << endl;
-        output = const_cast<char *>(palavra.c_str());
+        getline(file1, stringLineOutput);
+        cout<<"\n";
+        cout<<stringLineOutput<<endl;
+        output = const_cast<char *>(stringLineOutput.c_str());
         token = strtok(output, ",");
+        coluna = 1;
         while (token != NULL)
         {
-            if (coluna == 5)
-            { 
+            if (coluna == 5) {
                 key = string(token);
-                cout << key << endl;
                 classes2[key].insert(linha);
-                token = strtok(NULL, ",");
                 break;
             }
             key = to_string(coluna) + ", " + string(token);
             linhaStr = to_string(linha);
             texto[key].push_back(linhaStr);
             token = strtok(NULL, ",");
-            if (coluna < 4)
-            {
-                string teste;
-                teste = to_string(coluna) + ", " + string(token);
-                aux.push_back(teste);
-            }
             coluna++;
         }
-        antesCombinacao1.push(aux);
-        aux.clear();
         linha++;
     }
-    getchar();
-    getchar();
+
     file1.close();
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
+    return;
 }
 
 void lerT()
 {
-    auto start = std::chrono::steady_clock::now();
+        auto start = std::chrono::steady_clock::now();
     ifstream file1;
-    file1.open("src/dataset/T.csv");
+   file1.open("src/dataset/T.csv");
 
     string palavra;
     string key;
@@ -191,59 +178,54 @@ void lerT()
     int coluna = 1;
     int linha = 1;
     string linhaStr;
+    string stringLineOutput;
+    string charLineOutput;
 
     vector<string> aux;
 
     if (!file1)
     {
-        cout << "o arquivo 1 não pode ser aberto, o programa será fechado!" << endl;
+        printf("O arquivo não pode ser aberto \n");
         return;
     }
 
-    int cont = 0;
     while (file1)
     {
-        if (coluna == 5)
-            coluna = 1;
-        getline(file1, palavra);
-        cout << "\n";
-        cont++;
-        cout << cont << "° - linha" << endl;
-        cout << palavra << endl;
-        output = const_cast<char *>(palavra.c_str());
+        getline(file1, stringLineOutput);
+        cout<<"\n";
+        cout<<stringLineOutput<<endl;
+        output = const_cast<char *>(stringLineOutput.c_str());
         token = strtok(output, ",");
+        coluna = 1;
         while (token != NULL)
         {
-            if (coluna == 5)
-            { 
+            if (coluna == 5) {
                 key = string(token);
-                cout << key << endl;
                 classes3[key].push_back(linha);
-                token = strtok(NULL, ","); 
-                coluna=1;
                 break;
             }
-            key = string(token);
+            key = to_string(coluna) + ", " + string(token);
             linhaStr = to_string(linha);
             texto2[key].push_back(linhaStr);
-            token = strtok(NULL, ",");
-            if(coluna<4){ 
+            if(coluna<5){ 
                 string teste;
                 teste = to_string(coluna) + ", " + string(token);
                 aux.push_back(teste);
             }
+            token = strtok(NULL, ",");
             coluna++;
+
         }
         antesCombinacao2.push(aux);
         aux.clear();
         linha++;
     }
-    getchar();
-    getchar();
+
     file1.close();
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
+    return;
 }
 
 void printFilaDeVector()
@@ -487,19 +469,53 @@ void Token()
 
 void combinate(vector<string> vector, int perm[], int index, int n, int k);
 
+/*                              *
+*  Combinação First Job         *
+*                               *
+*/                              
+
+
+// void iniciaCombinacao()
+// {
+//     auto start = std::chrono::steady_clock::now();
+//     queue<vector<string>> help = antesCombinacao2;
+//     vector<string> ini;
+//     int perm[3] = {0};
+//     int index = 1;
+//     for (int i = 0; i < 50; i++)
+//     {
+//         ini = help.front();
+//         help.pop();
+//         for (index = 1; index <= 3; index++)
+//             combinate(ini, perm, 0, 3, index);
+//         ini.clear();
+//         combinacoes.push(allCombinatesLine);
+
+//         allCombinatesLine.clear();
+//     }
+//     auto end = std::chrono::steady_clock::now();
+//     std::chrono::duration<double> elapsed_seconds = end-start;
+//     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
+// }
+
+
+/*                              *
+*  Combinação FIFO              *
+*                               *
+*/                       
 void iniciaCombinacao()
 {
     auto start = std::chrono::steady_clock::now();
     queue<vector<string>> help = antesCombinacao2;
     vector<string> ini;
-    int perm[3] = {0};
+    int perm[4] = {0};
     int index = 1;
     for (int i = 0; i < 50; i++)
     {
         ini = help.front();
         help.pop();
-        for (index = 1; index <= 3; index++)
-            combinate(ini, perm, 0, 3, index);
+        for (index = 1; index <= 4; index++)
+            combinate(ini, perm, 0, 4, index);
         ini.clear();
         combinacoes.push(allCombinatesLine);
 
@@ -544,7 +560,54 @@ void combinate(vector<string> vector, int perm[], int index, int n, int k)
 }
 
 void *produtor(void *arg);
-void *consumidor(void *arg);
+void printCombinacoes();
+
+void produtorEconsumidor(){
+	estrutura_global vglobal;
+    vector<string> aux[BUFFERSIZE];
+
+	vglobal.currentidx = 0;
+	for(int i=0; i<BUFFERSIZE; i++)
+		vglobal.buffer[i].push_back("-1");
+	
+	pthread_mutex_init(&vglobal.buffer_mutex, NULL);
+	sem_init(&vglobal.buffer_full, 0, BUFFERSIZE);
+	sem_init(&vglobal.buffer_empty, 0, 0);
+
+	srand(time(NULL));
+	
+	for(int i=0; i<NUMPROD; i++)
+		pthread_create(&(prod[i]), NULL, produtor, &vglobal);
+
+	for(int i=0; i<NUMPROD; i++)
+		pthread_join(prod[i], NULL);
+}
+
+void *produtor(void *arg){
+	estrutura_global *vglobal = (estrutura_global*) arg;
+    queue<vector<string>> help = combinacoes;
+    vector<string> help2;
+    int cont=0;
+    do
+    {
+        cout<<cont<<endl;
+        help2 = help.front();
+        help.pop();
+        for (auto &i : help2)
+        {
+            sem_wait(&vglobal->buffer_full);
+            pthread_mutex_lock(&vglobal->buffer_mutex);
+            vglobal->buffer[vglobal->currentidx++].push_back(i);
+            pthread_mutex_unlock(&vglobal->buffer_mutex);
+            sem_post(&vglobal->buffer_empty);
+            cout<<"Combinação: ["<<i<<"] "<<endl;
+        }
+        cout<<endl<<endl;
+        help2.clear();
+        cont++;
+    }while (help.empty());
+    pthread_exit(arg);
+}
 
 void printCombinacoes()
 {
@@ -559,7 +622,6 @@ void printCombinacoes()
         {
             cout << "[" << i << "]"
                  << " ";
-            // produtor(i);
         }
         cout << endl;
         help2.clear();
@@ -572,6 +634,10 @@ void printCombinacoes()
 
 void interseccao2(string recebe);
 
+/*                              *
+*  Intersecção FIFO             *
+*                               *
+*/   
 void interseccoes1()
 {
     auto start = std::chrono::steady_clock::now();
@@ -592,6 +658,31 @@ void interseccoes1()
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
+
+/*                              *
+*  Intersecção FIFO             *
+*                               *
+*/   
+// void interseccoes1()
+// {
+//     auto start = std::chrono::steady_clock::now();
+//     cout << "=======interações e intersecções=======" << endl;
+//     queue<vector<string>> help = combinacoes;
+//     vector<string> help2;
+//     while (!help.empty())
+//     {
+//         help2 = help.front();
+//         help.pop();
+//         for (auto &i : help2)
+//             interseccao2(i);
+//         cout << endl;
+//         help2.clear();
+//     }
+//     cout << endl;
+//     auto end = std::chrono::steady_clock::now();
+//     std::chrono::duration<double> elapsed_seconds = end-start;
+//     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
+// }
 
 vector<int> interseccao3(vector<int> v1, vector<int> v2);
 void intersectionHash(vector<int> v);
@@ -709,12 +800,8 @@ void interseccaoClasse(){
                 cout << endl;
             }
         }
-        // break;
-    // }
     cont++;
     cout<<"Interseccções da virginica"<<endl;
-    // for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
-    // {
         if(cont == 1){
             for(auto i:multiInterseccoes){
                     for (auto c : virginica0){ 
@@ -727,12 +814,8 @@ void interseccaoClasse(){
                 cout << endl;
             }
         }
-        // break;
-    // }
     cont++;
     cout<<"setosa"<<endl;
-    // for (auto mapIt = begin(classes2); mapIt != end(classes2); ++mapIt)
-    // {
         if(cont == 2){
             for(auto i:multiInterseccoes){
                     for (auto c : setosa0){ 
@@ -745,7 +828,6 @@ void interseccaoClasse(){
                 cout << endl;
             }
         }
-        // break;
     }
 
     cout<<"Resultados: "<<endl;
@@ -903,16 +985,14 @@ void interseccao2Etapa4(string recebe)
             }
             for (auto mapIt = begin(cash); mapIt != end(cash); ++mapIt)
             {
-                // for (auto c : mapIt->second){
-                    if(aux2 == mapIt->second){
-                        cout<<"encontrou um igual!!!"<<endl;
-                        pegaInterseccaoEtapa4.push_back(aux2);
-                        for(auto m:aux2){
-                            cout<<m<<" ";
-                        }
-                        cout<<endl;
+                if(aux2 == mapIt->second){
+                    cout<<"encontrou um igual!!!"<<endl;
+                    pegaInterseccaoEtapa4.push_back(aux2);
+                    for(auto m:aux2){
+                        cout<<m<<" ";
                     }
-                // }
+                    cout<<endl;
+                }
             }
         }
     }
@@ -1027,78 +1107,6 @@ void numeroClassesIteracoesEtapa4(){
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
-}
-
-void *produtor(void *arg);
-void *consumidor(void *arg);
-
-void produtorEconsumidor(){
-
-	estrutura_global vglobal;
-    vector<string> aux[BUFFERSIZE];
-
-	vglobal.currentidx = 0;
-	for(int i=0; i<BUFFERSIZE; i++)
-		vglobal.buffer[i].push_back("-1");
-	
-	pthread_mutex_init(&vglobal.buffer_mutex, NULL);
-	sem_init(&vglobal.buffer_full, 0, BUFFERSIZE);
-	sem_init(&vglobal.buffer_empty, 0, 0);
-
-	srand(time(NULL));
-	
-	for(int i=0; i<NUMPROD; i++)
-		pthread_create(&(prod[i]), NULL, produtor, &vglobal);
-
-	for(int i=0; i<NUMCONS; i++)
-		pthread_create(&(cons[i]), NULL, consumidor, &vglobal);
-	
-	for(int i=0; i<NUMCONS; i++)
-		pthread_join(cons[i], NULL);
-
-	for(int i=0; i<NUMPROD; i++)
-		pthread_join(prod[i], NULL);
-}
-
-void *produtor(void *arg){
-	estrutura_global *vglobal = (estrutura_global*) arg;
-    queue<vector<string>> help = combinacoes;
-    vector<string> help2;
-    while(TRUE){
-        while (!help.empty())
-        {
-            help2 = help.front();
-            help.pop();
-            for (auto &i : help2)
-            {
-                sem_wait(&vglobal->buffer_full);
-                pthread_mutex_lock(&vglobal->buffer_mutex);
-                vglobal->buffer[vglobal->currentidx++].push_back(i);
-                pthread_mutex_unlock(&vglobal->buffer_mutex);
-                sem_post(&vglobal->buffer_empty);
-                cout<<"Produzindo: "<<i<<" ";
-                sleep((int) (rand() % 4));
-            }
-            cout << endl;
-            help2.clear();
-        }
-    }
-}
-
-void *consumidor(void *arg){
-	vector<vector<string>> n;
-	estrutura_global *vglobal =  (estrutura_global*) arg;
-	while(TRUE){
-		sem_wait(&vglobal->buffer_empty);
-		pthread_mutex_lock(&vglobal->buffer_mutex);
-		n.push_back(vglobal->buffer[--vglobal->currentidx]);
-		pthread_mutex_unlock(&vglobal->buffer_mutex);
-		sem_post(&vglobal->buffer_full);
-        for(auto i:n)
-            for(auto b:i)
-		        cout<<"Consumindo: "<<b<<endl;
-		sleep((int) (rand() % 4));
-	}
 }
 
 #endif

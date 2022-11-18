@@ -3,6 +3,8 @@
     "files.associations": {
         "xstring": "cpp",
         "vector": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "iostream": "cpp",
+        "iosfwd": "cpp"
     }
 }

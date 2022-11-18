@@ -1,9 +1,0 @@
-In file included from src/menu.hpp:4,
-                 from src/main.cpp:1:
-src/read.hpp: In function ‘void interseccao2(std::string)’:
-src/read.hpp:522:73: error: invalid cast from type ‘std::vector<std::__cxx11::basic_string<char> >’ to type ‘int’
-  522 |             pegaInterseccao3.push_back( (int) (texto.find(chave)->second) );
-      |                                                                         ^
-make: [makefile:17: build/objects/src/main.o] Error 1 (ignored)
-g++: error: ./build/objects/src/main.o: No such file or directory
-make: [makefile:21: build//app] Error 1 (ignored)
