@@ -19,15 +19,15 @@ int main(){
 			menu();
 			break;
 		case 2:
-			auto start = std::chrono::steady_clock::now();
+			// auto start = std::chrono::steady_clock::now();
 			geralFIFO();
-			auto end = std::chrono::steady_clock::now();
-			std::chrono::duration<double> elapsed_seconds = end-start;
-			std::cout << "tempo: " << elapsed_seconds.count() <<endl;
+			// auto end = std::chrono::steady_clock::now();
+			// std::chrono::duration<double> elapsed_seconds = end-start;
+			// std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 			break;
-		// case 3:
-		// 	geralFirstJob();
-		// 	break;
+		case 3:
+			geralFirstJob();
+			break;
 	}
 	return 0;
 }

@@ -28,7 +28,6 @@ void geralFIFO(){
 	lerT();
 	printFilaDeVector();
 	iniciaCombinacao();
-	// printCombinacoes();
 	produtorEconsumidor();
 	interseccoes1();
 	interseccaoDasCombinacoes();
@@ -42,32 +41,30 @@ void geralFIFO(){
 	interseccaoDasCombinacoesEtapa4();
 	interseccaoClasseEtapa4();
 	numeroClassesIteracoesEtapa4();
-	// produtorEconsumidor();
 }
 
 void geralFirstJob(){
-	// ler();
-	// Hash();
-	// HashNomes1();
-	// mostraClasseDeFlores();
-	// classesFlorMetodo();
-	// lerT();
-	// printFilaDeVector();
-	// iniciaCombinacao();
-	// printCombinacoes();
-	// interseccoes1();
-	// interseccaoDasCombinacoes();
-	// printaPegaInterseccao2();
-	// interseccaoClasse();
-	// interseccaoDasCombinacoes();
-	// numeroClassesIteracoes();
-	// cashHash();
-	// printaCash();
-	// interseccaoEtapa4();
-	// interseccaoDasCombinacoesEtapa4();
-	// interseccaoClasseEtapa4();
-	// numeroClassesIteracoesEtapa4();
-	// produtorEconsumidor();
+	ler();
+	Hash();
+	HashNomes1();
+	mostraClasseDeFlores();
+	classesFlorMetodo();
+	lerT();
+	printFilaDeVector();
+	iniciaCombinacaofirstJob();
+	printCombinacoes();
+	interseccoes1();
+	interseccaoDasCombinacoes();
+	printaPegaInterseccao2();
+	interseccaoClasse();
+	interseccaoDasCombinacoes();
+	numeroClassesIteracoes();
+	cashHash();
+	printaCash();
+	interseccaoEtapa4();
+	interseccaoDasCombinacoesEtapa4();
+	interseccaoClasseEtapa4();
+	numeroClassesIteracoesEtapa4();
 }
 
 void etapa1(){

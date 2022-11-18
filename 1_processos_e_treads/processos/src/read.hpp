@@ -88,11 +88,13 @@ public:
     void HashNomes2();
     void Token();
     void Task();
+    void iniciaCombinacaofirstJob();
     void iniciaCombinacao();
     void combinate(vector<string> vector, int perm[], int index, int n, int k);
     void printCombinacoes();
     void interseccoes1();
     void printaVectorProcura(vector<string> v);
+    void interseccoesFirstJob();
     void interseccao2(string recebe);
     void interseccao3(vector<int> v1, vector<int> v2);
     void interseccaoClasse();
@@ -474,35 +476,33 @@ void combinate(vector<string> vector, int perm[], int index, int n, int k);
 *                               *
 */                              
 
-
-// void iniciaCombinacao()
-// {
-//     auto start = std::chrono::steady_clock::now();
-//     queue<vector<string>> help = antesCombinacao2;
-//     vector<string> ini;
-//     int perm[3] = {0};
-//     int index = 1;
-//     for (int i = 0; i < 50; i++)
-//     {
-//         ini = help.front();
-//         help.pop();
-//         for (index = 1; index <= 3; index++)
-//             combinate(ini, perm, 0, 3, index);
-//         ini.clear();
-//         combinacoes.push(allCombinatesLine);
-
-//         allCombinatesLine.clear();
-//     }
-//     auto end = std::chrono::steady_clock::now();
-//     std::chrono::duration<double> elapsed_seconds = end-start;
-//     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
-// }
-
+void iniciaCombinacaofirstJob()
+{
+    auto start = std::chrono::steady_clock::now();
+    queue<vector<string>> help = antesCombinacao2;
+    vector<string> ini;
+    int perm[4] = {0};
+    int index = 1;
+    for (index = 1; index <= 4; index++)
+    {
+        for (int i = 0; i < 50; i++)
+        ini = help.front();
+        help.pop();
+        combinate(ini, perm, 0, 4, index);
+        ini.clear();
+    }
+    combinacoes.push(allCombinatesLine);
+    allCombinatesLine.clear();
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
+}
 
 /*                              *
 *  Combinação FIFO              *
 *                               *
 */                       
+
 void iniciaCombinacao()
 {
     auto start = std::chrono::steady_clock::now();
@@ -660,29 +660,30 @@ void interseccoes1()
 }
 
 /*                              *
-*  Intersecção FIFO             *
+*  Intersecção First Job        *
 *                               *
 */   
-// void interseccoes1()
-// {
-//     auto start = std::chrono::steady_clock::now();
-//     cout << "=======interações e intersecções=======" << endl;
-//     queue<vector<string>> help = combinacoes;
-//     vector<string> help2;
-//     while (!help.empty())
-//     {
-//         help2 = help.front();
-//         help.pop();
-//         for (auto &i : help2)
-//             interseccao2(i);
-//         cout << endl;
-//         help2.clear();
-//     }
-//     cout << endl;
-//     auto end = std::chrono::steady_clock::now();
-//     std::chrono::duration<double> elapsed_seconds = end-start;
-//     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
-// }
+
+void interseccoesFirstJob()
+{
+    auto start = std::chrono::steady_clock::now();
+    cout << "=======interações e intersecções=======" << endl;
+    queue<vector<string>> help = combinacoes;
+    vector<string> help2;
+    while (!help.empty())
+    {
+        help2 = help.front();
+        help.pop();
+        for (auto &i : help2)
+            interseccao2(i);
+        cout << endl;
+        help2.clear();
+    }
+    cout << endl;
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
+}
 
 vector<int> interseccao3(vector<int> v1, vector<int> v2);
 void intersectionHash(vector<int> v);
