@@ -20,6 +20,7 @@ class Etapas{
 };
 
 void geralFIFO(){
+	auto start = std::chrono::steady_clock::now();
 	ler();
 	Hash();
 	HashNomes1();
@@ -41,9 +42,13 @@ void geralFIFO(){
 	interseccaoDasCombinacoesEtapa4();
 	interseccaoClasseEtapa4();
 	numeroClassesIteracoesEtapa4();
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo geral FIFO: " << elapsed_seconds.count() <<endl;
 }
 
 void geralFirstJob(){
+	auto start = std::chrono::steady_clock::now();
 	ler();
 	Hash();
 	HashNomes1();
@@ -65,6 +70,9 @@ void geralFirstJob(){
 	interseccaoDasCombinacoesEtapa4();
 	interseccaoClasseEtapa4();
 	numeroClassesIteracoesEtapa4();
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::cout << "tempo Geral First Job: " << elapsed_seconds.count() <<endl;
 }
 
 void etapa1(){

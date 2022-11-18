@@ -385,9 +385,6 @@ void HashNomes1()
         cout << str << endl;
     }
 
-    getchar();
-    getchar();
-
     file1.close();
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;

@@ -27,11 +27,9 @@ void menu(){
 		cout<<"===MENU==="<<endl;
 		cout<<"0 - limpa tela"<<endl;
 		cout<<"1 - Etapa 1"<<endl;
-		cout<<"2 - Etapa 2"<<endl;
+		cout<<"2 - Etapa 2, 5 e 6"<<endl;
 		cout<<"3 - Etapa 3"<<endl;
 		cout<<"4 - Etapa 4"<<endl;
-		cout<<"5 - Etapa 5"<<endl;
-		cout<<"6 - Etapa 6"<<endl;
 		cout<<"111 - sair"<<endl;
 		cin>>op;
 		switch (op)
