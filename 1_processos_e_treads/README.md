@@ -1,20 +1,8 @@
-# Processos
+<h1></h1>
+Autor: Leonardo Campos<p>
+linkedin: (https://www.linkedin.com/in/leonardo-de-oliveira-campos-60225720b/)
 
-Neste trabalho vamos construir um sistema de classificação cujas características nos permitirão observar conceitos importantes como: escalonamento e gestão de memória primária. Neste sistema, vamos considerar duas bases de dados D e T. A base D será utilizada para simular a inicialização, fornecendo assim o conceito de bootstrapping, tal como no sistema operacional.
-
-Já a base T representará os processos a serem executados, cada um produzindo uma série de computações pesadas e necessárias, as quais vamos coordenar utilizando um sistema de escalonamento em dois níveis: mecanismo e política. Além disso, abordaremos o conceito de memória tratando de chavear os processos entre memória primária e processador, claro, tudo de forma simulada para que possamos extrair resultados mensuráveis para avaliação.
-
-<strong>Etapa I:</strong> Elaboração das tabelas hash para itens e classes. Dado uma linha do arquivo, considerar item as colunas de 0 a n - 1. Considere a coluna n de cada linha como classe. Nessas tabelas é preciso armazenar cada item como chave e seus índices no arquivo como valor. Considere como índice a linha que aquele valor específico aparece. Considere também item específico aquele item pertencente a coluna x. Logo, para itens de mesmo valor, a indexação deve ser feita de forma separada, ou seja, se um item aparece na coluna 1 e 3 com valor 23.4, considere como chave da hash (1, 23.4) e (3,23.4). Repita esse processo para as classes, armazenando como chave sua descrição e como valor suas indexações.
-
-<strong>Etapa II:</strong> Agora vamos considerar o conteúdo de T. Leia o conteúdo de T em uma Fila em que cada posição detenha uma linha inteira já tokenizada. O tipo Vector do C++ consegue auxiliar vocês nessa tarefa. Depois de carregar todo o conteúdo de T, processar linha a linha. Considere como processar a ação de comparar os itens de T com a tabela hash de itens, selecionando apenas os itens em comum. Feito isso, realize a permutação dos itens comuns de 1 a N, com N definido estaticamente com define diretamente no código. Armazene todas as permutações de uma entrada em T em um segundo Vector.
-
-<strong>Etapa III:</strong> Para cada permutação encontrada vocês precisam buscar individualmente os valores dos itens em hash, executando em seguida uma interseção desses valores. Se a interseção for não nula, aplique essa na hash de todas as classes. A classe que apresentar um valor de sobreposição maior após processar todas as permutações será apresentada como classe da tarefa em T.
-
-<strong>Etapa IV:</strong> Elaborar um cache utilizando uma hash para armazenar o resultado das interseções já realizadas. Adote como chave as permutações e como valor o resultado das interseções. Feito isso, modifique o algoritmo para trabalhar da seguinte forma: Para cada nova permutação, buscar em cache se há resultado já processado. Em caso afirmativo, apenas teste as classes para o resultado. Caso contrário, faça toda a computação envolvida.
-
-<strong>Etapa V:</strong> Como as tarefas em T estão espalhadas não tem como sabermos o quão importante é a cache, uma vez que estamos utilizando apenas uma política do tipo Round Robin para escalonar. Então, sua função é criar uma política que organize melhor as tarefas para a sequência de execução aproveite melhor as computações já realizadas. Para isso, pense em organizar melhor os parâmetros de entrada de forma a encontrar grandes sobreposições de itens similares.
-
-<strong>Etapa VI:</strong> Vamos implementar uma memória primária para chavear processos. Nesse modelo, uma tarefa não será concluída por completo porque se seu tempo de CPU acabar você a colocará em um espaço de memória para aguardar nova submissão. Vamos analisar nessa etapa os impactos do chaveamento, da organização de memória e suas diferentes hierarquias.
+<h1></h1>
 
 <h2>Dados gerais de compilação e afins</h2>
 
@@ -42,92 +30,9 @@ make j(número de núcleos disponíveis do seu computador)
 
 Para saber a quantidade de núcleos do seu computador basta jogar as informações do seu processador na internet!!!
 
+<h1>Menu da aplicação</h1>
 
-<h2>Resuloções Etapa 1</h2>
+No menu inicial da aplicação é possível escolher por qual passo você vai, você pode ir passo a passo, para quem quer ver cada processo sendo executado. Você pode escolher fazer tudo de uma vez na opção 2, para quem quer ver a simulação mais rápida, utilizando o escalonamento FIFO. Já na terceira etapa temos a simulação utilizando o First Job como escalonador.
 
-Para resolução da etapa 1 usei um "unoder_map" para ser a hash dos itens D, no qual seria alocados os números como chave e suas aparições como valores.
-![image](https://user-images.githubusercontent.com/78708394/197238271-dc03a069-d6c3-4ec0-a2f0-ab71ef59f918.png)
+![image](https://user-images.githubusercontent.com/78708394/202824593-ebf3d1aa-3bbc-440f-9ddc-357e59cf9e39.png)
 
-<strong>Menu</strong><p>
-Através do menu é possível acessar cada processo individualmente, foi melhor fazer dessa forma para que fosse obtido o resultado visual das iterações entre processos, assim é necessário que o usuário clique em todas as opções em ordem crescente, para que tenha o resultado de cada processo individualmente e seja carregado para os processos subsequêntes, assim se o usuário pular uma opção os processos não estarão carregados para exucição desta. Isso vale para todas as etapas.<p>
-
-![menu etapa 1](https://user-images.githubusercontent.com/78708394/197241245-1623224e-8711-44db-941a-58dbb70e3634.png)
-
-
-<h2>Resolução Etapa 2</h2>
-
-![etapa 2](https://user-images.githubusercontent.com/78708394/197240421-2064cae4-452f-4952-90e4-0c1c3ac61665.png)
-
-<strong>Menu</strong><p>
-![menu etapa 2](https://user-images.githubusercontent.com/78708394/197241288-577cec32-de0a-4f89-a259-23d82bed7302.png)
-
-
-<h2>Resolução Etapa 3</h2>
-
-![etapa 3](https://user-images.githubusercontent.com/78708394/197240533-71488f10-6607-4af8-9257-9c2b4a9dd133.png)
-
-<strong>Menu</strong><p>
-![menu etapa 3](https://user-images.githubusercontent.com/78708394/197241332-dfa3a214-2308-474e-ac20-f8135f97caf6.png)
-
-<h2>Resolução Etapa 4</h2>
-
-![etapa 4](https://user-images.githubusercontent.com/78708394/197239728-617f40e4-7960-46ec-87a1-bbe6236eb0f9.png)
-
-<strong>Menu</strong><p>
-![menu etapa 4](https://user-images.githubusercontent.com/78708394/197241358-54ce980a-da46-4f06-808a-0beaf65d6048.png)
-
-<h2>Método usado para calcular tempo de execução de algoritmo</h2>
-
-Para calcular o tempo de execução do algoritmo que estamos trabalhando usei a biblioteca <chrono> do C++ 11, está biblioteca é capaz de medir tempo de execução com alta precisão, utilizando o próprio clock da máquina para fazer o cálculo de tempo. Neste link o u´suario pode encontrar mais informações direto da documentação oficial do C++: [https://en.cppreference.com/w/cpp/chrono#std::chrono_library]
-
-<strong>Utilização</strong>
-
-~~~
-int main()
-{
-    auto start = std::chrono::steady_clock::now();
-    
-    //Funções a serem executadas
-    
-    auto end = std::chrono::steady_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end-start;
-    std::cout << "tempo de execução:: " << elapsed_seconds.count() << endl;
-}
-~~~
-
-Com este dado de execução é possível ter um ponto de vista sobre a execução mas não é apenas rodar o medidor de tempo para encontrar o tempo de execução, é necessário rodar o software por 10x e assim tirar a média dos tempos para poder chegar a um tempo convergente.
-
-Se você estiver usando o sistema Linux como SO, também pode optar por uma forma mais simples de calcular. Sugiro que use o time ./a.out no terminal, onde a.out é o executável do seu programa. Esse comando imprime 3 linhas, sendo elas:
-
- - real: Tempo real do começo ao fim da execução;
- - sys: Tempo gasto pelo kernel do sistema no processo de execução do seu programa;
- - user: Tempo usado no user-mode. É o tempo que seu computador gasta no processo fora do kernel;
-
-<h2>Resolução Etapa 5</h2>
-
-Para resolução da etapa 5 mudei a politica de escalonamento do software, a qual era uma FIFO, visto que eu pegava a fila de dados para processar nas combinações e nas intersecções, passei a política para menor trabalho, onde setava a variável na primeira coluna e a percorria pegando todos os valores e assim por diante até percorrer as 4 colunas de dados do banco de dados, depois o software fazia o mesmo processamento já visto nas etapas anteriores.
-
-![image](https://user-images.githubusercontent.com/78708394/202823260-59d9176a-b8ed-4fe1-a8ef-89d90c131806.png)
-
-A imagem 1 acima mostra a etapa das combinações recebendo o "menor trabalho", ou "first job" na função de combinate. A função com o menor job tem um ganho de tempo em relação ao FIFO, entretanto notei que o FIFO faz mais intersecções, talvez pelo método que eu usei para tal, o qual capta uma linha e joga a linha subsequente num SET para que eu pegue as intersecções, assim com o escalonamento "first job" esse método não é tão funcional quanto ao FIFO, visto que pego valorees da mesma coluna.
-
-<h2>Resolução Etapa 6</h2>
-
-Para resolução da etapa 6, utilizei tanto as threads para diminuir o custo de processamento das combinações/intersecções quanto criei uma memória "virtual" para que o processamento ficasse mais rápido, fazendo com que o processamento nunca ultrapasse 3 segundos, testando na minha máquina - obviamente -, a computação é cheia de irregularidades devido a mudança de hardwares, entretanto em média os valores foram menores que 3 segundos de processamento, lembrando que estou utilizando os COUT'S para printar os resoltados na tela, sabemos que printar tem um custo físico a máquina, visto que ao printar é dado um tempo padrão ao aparecer na tela, tirando esses pormenores de lado, pude perceber um ganho ao usar 2 threads para fazer as combinações/intersecções. Vale ressaltar que no começo da produção da etapa 6 comecei a uzar um algoritmo semáforo para paralelizar a dinâmica de combinações, entretanto como minha aplicação roda com uma política FIFO o semáforo seria perda de tempo, ele é usual apenas com o first job, no caso do meu software. Assim tirei a parte de consumidor do algoritmo e deixei apenas o produtor para que eu pudesse jogar nas threads, tirando o sleep também, obviamente.
-
-No que tange a memória virtual criada por mim para o software, utilizei de forma que evitasse um estouro "proposital" de memória - pré-definida - assim quando as combinações alcançam 1 segundo de processamento a memória capta todas as informações das combinações feitas até o momento e salva-as em um vector de vector, a fim de usá-las para dar sequência no processamento. Assim o processamento não excede 1 segundo até as combinações, obviamente que a somatória de todos os processos que estão sendo executados no código vão resultar num valor maior que 1.
-
-![image](https://user-images.githubusercontent.com/78708394/202823978-b4242937-315b-45c4-a8af-b328cbaf5bd3.png)
-
-Na imagem acima é possível ver o tempo como fator de continuidade do processamento, também é possível ver a produção de intersecções. Na imagem abaixo encontras-se o produtor, responsável pelas threads da aplicação.
-
-![image](https://user-images.githubusercontent.com/78708394/202824167-6f08f55a-659a-4066-80f8-61eed3c6e8d9.png)
-
-
-<h2>Comentários finais</h2>
-
-Este foi um trabalho acadêmico do CEFET campus V. Foi de longe o trabalho mais proveitoso que tive ao longo do curso, porque propiciou que eu conhecesse novas funcionalidades da STL e também me fez entender melhor os sistemas operacionais e como eles gerenciam seus processos.
-
-<h1>Referências</h1>
-
- *  SistemasOperacionaisModernosTanenbaum4Edio [1]
