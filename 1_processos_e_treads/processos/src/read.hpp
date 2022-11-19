@@ -89,7 +89,6 @@ public:
     void HashNomes1();
     void classeFloresMetodo();
     void HashNomes2();
-    void Token();
     void Task();
     void iniciaCombinacaofirstJob();
     void iniciaCombinacao();
@@ -436,46 +435,7 @@ void HashNomes2()
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
 
-void Token()
-{
-    auto start = std::chrono::steady_clock::now();
-    ifstream file1;
-    file1.open("src/dataset/D.csv");
-
-    while (file1)
-    {
-        string palavra;
-        getline(file1, palavra);
-        vector<string> tokens;
-        stringstream check1(palavra);
-        string intermediate;
-        while (getline(check1, intermediate, ','))
-        {
-            tokens.push_back(intermediate);
-        }
-        cout << "{ ";
-        for (int i = 0; i < (int)tokens.size(); i++)
-        {
-            cout << tokens[i] << ' ';
-        }
-        cout << "}" << endl;
-    }
-
-    getchar();
-    getchar();
-
-    file1.close();
-    auto end = std::chrono::steady_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end-start;
-    std::cout << "tempo: " << elapsed_seconds.count() <<endl;
-}
-
-void combinate(vector<string> vector, int perm[], int index, int n, int k);
-
-/*                              *
-*  Combinação First Job         *
-*                               *
-*/                              
+void combinate(vector<string> vector, int perm[], int index, int n, int k);                           
 
 void iniciaCombinacaofirstJob()
 {
@@ -497,12 +457,7 @@ void iniciaCombinacaofirstJob()
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
-}
-
-/*                              *
-*  Combinação FIFO              *
-*                               *
-*/                       
+}                    
 
 void iniciaCombinacao()
 {
@@ -635,10 +590,6 @@ void printCombinacoes()
 
 void interseccao2(string recebe);
 
-/*                              *
-*  Intersecção FIFO             *
-*                               *
-*/   
 void interseccoes1()
 {
     auto start = std::chrono::steady_clock::now();
@@ -659,11 +610,6 @@ void interseccoes1()
     std::chrono::duration<double> elapsed_seconds = end-start;
     std::cout << "tempo: " << elapsed_seconds.count() <<endl;
 }
-
-/*                              *
-*  Intersecção First Job        *
-*                               *
-*/   
 
 void interseccoesFirstJob()
 {
