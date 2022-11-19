@@ -103,19 +103,30 @@ Se você estiver usando o sistema Linux como SO, também pode optar por uma form
  - sys: Tempo gasto pelo kernel do sistema no processo de execução do seu programa;
  - user: Tempo usado no user-mode. É o tempo que seu computador gasta no processo fora do kernel;
 
-<h2>Resolução Etapa 5 e 6</h2>
+<h2>Resolução Etapa 5</h2>
 
-Nesta epata foi mudada a política de escalonamento do software, para que as coisas ficassem mais interessantes. Neste ponto de desenvolvimento escolhi fazer a 'first job' para que pudesse passar uma linha de processamento por vez para a cache, assim o sistema sairia de FIFO, atual escalonador. Neste ponto do código é pego o tempo de execução das combinações para ver se a mudança de escalonador resoltou numa melhora ou piora de tempo de processamento. 
+Para resolução da etapa 5 mudei a politica de escalonamento do software, a qual era uma FIFO, visto que eu pegava a fila de dados para processar nas combinações e nas intersecções, passei a política para menor trabalho, onde setava a variável na primeira coluna e a percorria pegando todos os valores e assim por diante até percorrer as 4 colunas de dados do banco de dados, depois o software fazia o mesmo processamento já visto nas etapas anteriores.
 
-O tempo de execução em FIFO foi de: 1.07823 segundos.
+![image](https://user-images.githubusercontent.com/78708394/202823260-59d9176a-b8ed-4fe1-a8ef-89d90c131806.png)
 
-(gráfico de tempo First Job)
+A imagem 1 acima mostra a etapa das combinações recebendo o "menor trabalho", ou "first job" na função de combinate. A função com o menor job tem um ganho de tempo em relação ao FIFO, entretanto notei que o FIFO faz mais intersecções, talvez pelo método que eu usei para tal, o qual capta uma linha e joga a linha subsequente num SET para que eu pegue as intersecções, assim com o escalonamento "first job" esse método não é tão funcional quanto ao FIFO, visto que pego valorees da mesma coluna.
 
-Por fim foi adicionado threads nas combinações, para que fosse agilizado o processamento destas. 
+<h2>Resolução Etapa 6</h2>
 
-(Gráfico de tempo Threas)
+Para resolução da etapa 6, utilizei tanto as threads para diminuir o custo de processamento das combinações/intersecções quanto criei uma memória "virtual" para que o processamento ficasse mais rápido, fazendo com que o processamento nunca ultrapasse 3 segundos, testando na minha máquina - obviamente -, a computação é cheia de irregularidades devido a mudança de hardwares, entretanto em média os valores foram menores que 3 segundos de processamento, lembrando que estou utilizando os COUT'S para printar os resoltados na tela, sabemos que printar tem um custo físico a máquina, visto que ao printar é dado um tempo padrão ao aparecer na tela, tirando esses pormenores de lado, pude perceber um ganho ao usar 2 threads para fazer as combinações/intersecções. Vale ressaltar que no começo da produção da etapa 6 comecei a uzar um algoritmo semáforo para paralelizar a dinâmica de combinações, entretanto como minha aplicação roda com uma política FIFO o semáforo seria perda de tempo, ele é usual apenas com o first job, no caso do meu software. Assim tirei a parte de consumidor do algoritmo e deixei apenas o produtor para que eu pudesse jogar nas threads, tirando o sleep também, obviamente.
 
-O trabalho foi muito bom para consolidar o aprendizado sobre os sistemas operacionais, foi feita a implementação da ideia de um sistema utilizando a linguagem C++ para tal. Foi visto desde tokenizadores e comparações de informações até processos, escalonadores e trheads, não consigo imaginar uma tarefa que proporciona-se tanto conhecimento consolidado como esta. 
+No que tange a memória virtual criada por mim para o software, utilizei de forma que evitasse um estouro "proposital" de memória - pré-definida - assim quando as combinações alcançam 1 segundo de processamento a memória capta todas as informações das combinações feitas até o momento e salva-as em um vector de vector, a fim de usá-las para dar sequência no processamento. Assim o processamento não excede 1 segundo até as combinações, obviamente que a somatória de todos os processos que estão sendo executados no código vão resultar num valor maior que 1.
+
+![image](https://user-images.githubusercontent.com/78708394/202823978-b4242937-315b-45c4-a8af-b328cbaf5bd3.png)
+
+Na imagem acima é possível ver o tempo como fator de continuidade do processamento, também é possível ver a produção de intersecções. Na imagem abaixo encontras-se o produtor, responsável pelas threads da aplicação.
+
+![image](https://user-images.githubusercontent.com/78708394/202824167-6f08f55a-659a-4066-80f8-61eed3c6e8d9.png)
+
+
+<h2>Comentários finais</h2>
+
+Este foi um trabalho acadêmico do CEFET campus V. Foi de longe o trabalho mais proveitoso que tive ao longo do curso, porque propiciou que eu conhecesse novas funcionalidades da STL e também me fez entender melhor os sistemas operacionais e como eles gerenciam seus processos.
 
 <h1>Referências</h1>
 
