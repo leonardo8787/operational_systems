@@ -3,6 +3,10 @@ Autor: Leonardo Campos<p>
 linkedin: (https://www.linkedin.com/in/leonardo-de-oliveira-campos-60225720b/)
 
 <h1></h1>
+A explicação passo a passo da aplicação encontras-se na WIKI na barra superior deste repositório!
+Click neste link para ser direcionado: https://github.com/leonardo8787/operational_systems/wiki
+
+<h1></h1>
 
 <h2>Dados gerais de compilação e afins</h2>
 
