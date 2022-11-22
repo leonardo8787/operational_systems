@@ -20,59 +20,70 @@ class Etapas{
 };
 
 void geralFIFO(){
-	auto start = std::chrono::steady_clock::now();
-	ler();
-	Hash();
-	HashNomes1();
-	mostraClasseDeFlores();
-	classesFlorMetodo();
-	lerT();
-	printFilaDeVector();
-	iniciaCombinacao();
-	produtorEconsumidor();
-	interseccoes1();
-	interseccaoDasCombinacoes();
-	printaPegaInterseccao2();
-	interseccaoClasse();
-	interseccaoDasCombinacoes();
-	numeroClassesIteracoes();
-	cashHash();
-	printaCash();
-	interseccaoEtapa4();
-	interseccaoDasCombinacoesEtapa4();
-	interseccaoClasseEtapa4();
-	numeroClassesIteracoesEtapa4();
-    auto end = std::chrono::steady_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end-start;
-    std::cout << "tempo geral FIFO: " << elapsed_seconds.count() <<endl;
+	// auto start = std::chrono::steady_clock::now();
+	// vector<double> tempo;
+	// clock_t t;
+	// int tam=10;
+	// while(tam--) {
+		auto start = std::chrono::steady_clock::now();
+		ler();
+		Hash();
+		HashNomes1();
+		classesFlorMetodo();
+		lerT();
+		// printFilaDeVector();
+		iniciaCombinacao();
+		produtorEconsumidor();
+		interseccoes1();
+		interseccaoDasCombinacoes();
+		// printaPegaInterseccao2();
+		interseccaoClasse();
+		interseccaoDasCombinacoes();
+		numeroClassesIteracoes();
+		cashHash();
+		// printaCash();
+		interseccaoEtapa4();
+		interseccaoDasCombinacoesEtapa4();
+		interseccaoClasseEtapa4();
+		numeroClassesIteracoesEtapa4();
+		// t=clock() - t;
+		// cout<<((double)t)/((CLOCKS_PER_SEC/1000))<<endl;
+		auto end = std::chrono::steady_clock::now();
+		std::chrono::duration<double> elapsed_seconds = end-start;
+		std::cout << "tempo geral FIFO: " << elapsed_seconds.count() <<endl;
+		// tempo.push_back(elapsed_seconds.count());
+	// }
 }
 
 void geralFirstJob(){
-	auto start = std::chrono::steady_clock::now();
-	ler();
-	Hash();
-	HashNomes1();
-	mostraClasseDeFlores();
-	classesFlorMetodo();
-	lerT();
-	printFilaDeVector();
-	iniciaCombinacaofirstJob();
-	printCombinacoes();
-	interseccoes1();
-	interseccaoDasCombinacoes();
-	printaPegaInterseccao2();
-	interseccaoClasse();
-	interseccaoDasCombinacoes();
-	numeroClassesIteracoes();
-	cashHash();
-	printaCash();
-	interseccaoEtapa4();
-	interseccaoDasCombinacoesEtapa4();
-	interseccaoClasseEtapa4();
-	numeroClassesIteracoesEtapa4();
-    auto end = std::chrono::steady_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end-start;
-    std::cout << "tempo Geral First Job: " << elapsed_seconds.count() <<endl;
+	// int tam=10;
+	// while (tam--)
+	// {
+		auto start = std::chrono::steady_clock::now();
+		ler();
+		Hash();
+		HashNomes1();
+		classesFlorMetodo();
+		lerT();
+		// printFilaDeVector();
+		iniciaCombinacaofirstJob();
+		// printCombinacoes();
+		interseccoes1();
+		interseccaoDasCombinacoes();
+		// printaPegaInterseccao2();
+		interseccaoClasse();
+		interseccaoDasCombinacoes();
+		numeroClassesIteracoes();
+		cashHash();
+		// printaCash();
+		interseccaoEtapa4();
+		interseccaoDasCombinacoesEtapa4();
+		interseccaoClasseEtapa4();
+		numeroClassesIteracoesEtapa4();
+		auto end = std::chrono::steady_clock::now();
+		std::chrono::duration<double> elapsed_seconds = end-start;
+		std::cout << "tempo Geral First Job: " << elapsed_seconds.count() <<endl;	
+	// }
 }
 
 void etapa1(){
