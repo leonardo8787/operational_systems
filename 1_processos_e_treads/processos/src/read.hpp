@@ -445,18 +445,25 @@ void iniciaCombinacaofirstJob()
     int index = 1;
     for (index = 1; index <= 4; index++)
     {
+        help = antesCombinacao2;
         for (int i = 0; i < 50; i++)
-        ini = help.front();
-        help.pop();
-        combinate(ini, perm, 0, 4, index);
-        ini.clear();
+        {
+            ini = help.front();
+            help.pop();
+            combinate(ini, perm, 0, 4, index);
+            ini.clear();
+        }
+        combinacoes.push(allCombinatesLine);
+        allCombinatesLine.clear();
     }
-    combinacoes.push(allCombinatesLine);
-    allCombinatesLine.clear();
+
+    // for (auto &i : allCombinatesLine)
+    //     std::cout << i << endl;
+
     // auto end = std::chrono::steady_clock::now();
-    // std::chrono::duration<double> elapsed_seconds = end-start;
+    // std::chrono::duration<double> elapsed_secunds = end-start;
     // std::cout << "tempo: " << elapsed_seconds.count() <<endl;
-}                    
+}              
 
 void iniciaCombinacao()
 {
