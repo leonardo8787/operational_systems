@@ -7,7 +7,7 @@ int main(){
 	cout<<"0 - sair"<<endl;
 	cout<<"1 - Passo a Passo"<<endl;
 	cout<<"2 - Usar 1 opção para simular todo o SO (FIFO)"<<endl;
-	cout<<"3 - Usar 2 opção para simular todo o SO (First Job)"<<endl;
+	cout<<"3 - Usar 2 opção para simular todo o SO (Multiplas Filas)"<<endl;
 	int op; 
 	cin>>op;
 	switch (op)
